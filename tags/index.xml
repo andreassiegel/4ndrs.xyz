@@ -2,165 +2,165 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on 4ndrs.xyz</title>
-    <link>http://4ndrs.xyz/tags/</link>
+    <link>https://4ndrs.xyz/tags/</link>
     <description>Recent content in Tags on 4ndrs.xyz</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 12 Apr 2020 19:41:08 +0200</lastBuildDate>
     
-	<atom:link href="http://4ndrs.xyz/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://4ndrs.xyz/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>cli</title>
-      <link>http://4ndrs.xyz/tags/cli/</link>
+      <link>https://4ndrs.xyz/tags/cli/</link>
       <pubDate>Sun, 12 Apr 2020 19:41:08 +0200</pubDate>
       
-      <guid>http://4ndrs.xyz/tags/cli/</guid>
+      <guid>https://4ndrs.xyz/tags/cli/</guid>
       <description></description>
     </item>
     
     <item>
       <title>git</title>
-      <link>http://4ndrs.xyz/tags/git/</link>
+      <link>https://4ndrs.xyz/tags/git/</link>
       <pubDate>Sun, 12 Apr 2020 19:41:08 +0200</pubDate>
       
-      <guid>http://4ndrs.xyz/tags/git/</guid>
+      <guid>https://4ndrs.xyz/tags/git/</guid>
       <description></description>
     </item>
     
     <item>
       <title>homebrew</title>
-      <link>http://4ndrs.xyz/tags/homebrew/</link>
+      <link>https://4ndrs.xyz/tags/homebrew/</link>
       <pubDate>Sun, 12 Apr 2020 19:41:08 +0200</pubDate>
       
-      <guid>http://4ndrs.xyz/tags/homebrew/</guid>
+      <guid>https://4ndrs.xyz/tags/homebrew/</guid>
       <description></description>
     </item>
     
     <item>
       <title>hugo</title>
-      <link>http://4ndrs.xyz/tags/hugo/</link>
+      <link>https://4ndrs.xyz/tags/hugo/</link>
       <pubDate>Sun, 12 Apr 2020 19:41:08 +0200</pubDate>
       
-      <guid>http://4ndrs.xyz/tags/hugo/</guid>
+      <guid>https://4ndrs.xyz/tags/hugo/</guid>
       <description></description>
     </item>
     
     <item>
       <title>build-automation</title>
-      <link>http://4ndrs.xyz/tags/build-automation/</link>
+      <link>https://4ndrs.xyz/tags/build-automation/</link>
       <pubDate>Mon, 19 Jun 2017 00:00:00 +0200</pubDate>
       
-      <guid>http://4ndrs.xyz/tags/build-automation/</guid>
+      <guid>https://4ndrs.xyz/tags/build-automation/</guid>
       <description></description>
     </item>
     
     <item>
       <title>build-status</title>
-      <link>http://4ndrs.xyz/tags/build-status/</link>
+      <link>https://4ndrs.xyz/tags/build-status/</link>
       <pubDate>Mon, 19 Jun 2017 00:00:00 +0200</pubDate>
       
-      <guid>http://4ndrs.xyz/tags/build-status/</guid>
+      <guid>https://4ndrs.xyz/tags/build-status/</guid>
       <description></description>
     </item>
     
     <item>
       <title>ci</title>
-      <link>http://4ndrs.xyz/tags/ci/</link>
+      <link>https://4ndrs.xyz/tags/ci/</link>
       <pubDate>Mon, 19 Jun 2017 00:00:00 +0200</pubDate>
       
-      <guid>http://4ndrs.xyz/tags/ci/</guid>
+      <guid>https://4ndrs.xyz/tags/ci/</guid>
       <description></description>
     </item>
     
     <item>
       <title>coveralls</title>
-      <link>http://4ndrs.xyz/tags/coveralls/</link>
+      <link>https://4ndrs.xyz/tags/coveralls/</link>
       <pubDate>Mon, 19 Jun 2017 00:00:00 +0200</pubDate>
       
-      <guid>http://4ndrs.xyz/tags/coveralls/</guid>
+      <guid>https://4ndrs.xyz/tags/coveralls/</guid>
       <description></description>
     </item>
     
     <item>
       <title>go</title>
-      <link>http://4ndrs.xyz/tags/go/</link>
+      <link>https://4ndrs.xyz/tags/go/</link>
       <pubDate>Mon, 19 Jun 2017 00:00:00 +0200</pubDate>
       
-      <guid>http://4ndrs.xyz/tags/go/</guid>
+      <guid>https://4ndrs.xyz/tags/go/</guid>
       <description></description>
     </item>
     
     <item>
       <title>golang</title>
-      <link>http://4ndrs.xyz/tags/golang/</link>
+      <link>https://4ndrs.xyz/tags/golang/</link>
       <pubDate>Mon, 19 Jun 2017 00:00:00 +0200</pubDate>
       
-      <guid>http://4ndrs.xyz/tags/golang/</guid>
+      <guid>https://4ndrs.xyz/tags/golang/</guid>
       <description></description>
     </item>
     
     <item>
       <title>test-coverage</title>
-      <link>http://4ndrs.xyz/tags/test-coverage/</link>
+      <link>https://4ndrs.xyz/tags/test-coverage/</link>
       <pubDate>Mon, 19 Jun 2017 00:00:00 +0200</pubDate>
       
-      <guid>http://4ndrs.xyz/tags/test-coverage/</guid>
+      <guid>https://4ndrs.xyz/tags/test-coverage/</guid>
       <description></description>
     </item>
     
     <item>
       <title>travis</title>
-      <link>http://4ndrs.xyz/tags/travis/</link>
+      <link>https://4ndrs.xyz/tags/travis/</link>
       <pubDate>Mon, 19 Jun 2017 00:00:00 +0200</pubDate>
       
-      <guid>http://4ndrs.xyz/tags/travis/</guid>
+      <guid>https://4ndrs.xyz/tags/travis/</guid>
       <description></description>
     </item>
     
     <item>
       <title>aws</title>
-      <link>http://4ndrs.xyz/tags/aws/</link>
+      <link>https://4ndrs.xyz/tags/aws/</link>
       <pubDate>Sat, 27 May 2017 00:00:00 +0200</pubDate>
       
-      <guid>http://4ndrs.xyz/tags/aws/</guid>
+      <guid>https://4ndrs.xyz/tags/aws/</guid>
       <description></description>
     </item>
     
     <item>
       <title>docker</title>
-      <link>http://4ndrs.xyz/tags/docker/</link>
+      <link>https://4ndrs.xyz/tags/docker/</link>
       <pubDate>Sat, 27 May 2017 00:00:00 +0200</pubDate>
       
-      <guid>http://4ndrs.xyz/tags/docker/</guid>
+      <guid>https://4ndrs.xyz/tags/docker/</guid>
       <description></description>
     </item>
     
     <item>
       <title>iac</title>
-      <link>http://4ndrs.xyz/tags/iac/</link>
+      <link>https://4ndrs.xyz/tags/iac/</link>
       <pubDate>Sat, 27 May 2017 00:00:00 +0200</pubDate>
       
-      <guid>http://4ndrs.xyz/tags/iac/</guid>
+      <guid>https://4ndrs.xyz/tags/iac/</guid>
       <description></description>
     </item>
     
     <item>
       <title>infrastructure-as-code</title>
-      <link>http://4ndrs.xyz/tags/infrastructure-as-code/</link>
+      <link>https://4ndrs.xyz/tags/infrastructure-as-code/</link>
       <pubDate>Sat, 27 May 2017 00:00:00 +0200</pubDate>
       
-      <guid>http://4ndrs.xyz/tags/infrastructure-as-code/</guid>
+      <guid>https://4ndrs.xyz/tags/infrastructure-as-code/</guid>
       <description></description>
     </item>
     
     <item>
       <title>terraform</title>
-      <link>http://4ndrs.xyz/tags/terraform/</link>
+      <link>https://4ndrs.xyz/tags/terraform/</link>
       <pubDate>Sat, 27 May 2017 00:00:00 +0200</pubDate>
       
-      <guid>http://4ndrs.xyz/tags/terraform/</guid>
+      <guid>https://4ndrs.xyz/tags/terraform/</guid>
       <description></description>
     </item>
     
