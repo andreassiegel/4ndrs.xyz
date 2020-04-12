@@ -1,320 +1,63 @@
-<!DOCTYPE html>
-<html lang="en">
-
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <meta name="author" content="Andreas Siegel">
-    <meta name="description" content="some guy passionate about IT and other things">
-    <meta name="keywords" content="blog,developer,personal">
-
-    <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Multiple Tool Versions via Homebrew"/>
-<meta name="twitter:description" content="Recently, I started using Hugo with an older project. After I pulled the code and ran hugo, it failed. It turned out it was not yet compatible with the latest version that got automatically installed via Homebrew.
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=author content="Andreas Siegel"><meta name=description content="some guy passionate about IT and other things"><meta name=keywords content="blog,developer,personal"><meta name=twitter:card content="summary"><meta name=twitter:title content="Multiple Tool Versions via Homebrew"><meta name=twitter:description content="Recently, I started using Hugo with an older project. After I pulled the code and ran hugo, it failed. It turned out it was not yet compatible with the latest version that got automatically installed via Homebrew.
 Well, no big deal, Homebrew allows for installing older versions of formulae. So I got it working.
-Shortly after that, I started another new project (this blog, BTW). Guess what happened? It broke again, this time because the installed version of hugo was too old and not compatible with the configured theme."/>
-
-    <meta property="og:title" content="Multiple Tool Versions via Homebrew" />
-<meta property="og:description" content="Recently, I started using Hugo with an older project. After I pulled the code and ran hugo, it failed. It turned out it was not yet compatible with the latest version that got automatically installed via Homebrew.
+Shortly after that, I started another new project (this blog, BTW). Guess what happened? It broke again, this time because the installed version of hugo was too old and not compatible with the configured theme."><meta property="og:title" content="Multiple Tool Versions via Homebrew"><meta property="og:description" content="Recently, I started using Hugo with an older project. After I pulled the code and ran hugo, it failed. It turned out it was not yet compatible with the latest version that got automatically installed via Homebrew.
 Well, no big deal, Homebrew allows for installing older versions of formulae. So I got it working.
-Shortly after that, I started another new project (this blog, BTW). Guess what happened? It broke again, this time because the installed version of hugo was too old and not compatible with the configured theme." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://4ndrs.xyz/posts/multiple-tool-versions-via-homebrew/" />
-<meta property="article:published_time" content="2020-04-12T19:41:08+02:00" />
-<meta property="article:modified_time" content="2020-04-12T19:41:08+02:00" />
-
-
-    
-      <base href="https://4ndrs.xyz/posts/multiple-tool-versions-via-homebrew/">
-    
-    <title>
-  Multiple Tool Versions via Homebrew · 4ndrs.xyz
-</title>
-
-    
-      <link rel="canonical" href="https://4ndrs.xyz/posts/multiple-tool-versions-via-homebrew/">
-    
-
-    <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather:300,700%7CSource+Code+Pro:400,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
-
-    
-      
-      
-      <link rel="stylesheet" href="https://4ndrs.xyz/css/coder.min.e5a71a2fc56568889ec70c1e4644389a8b2ac9fcba1bd3a89511f385ef5563c8.css" integrity="sha256-5acaL8VlaIiexwweRkQ4mosqyfy6G9OolRHzhe9VY8g=" crossorigin="anonymous" media="screen" />
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <link rel="icon" type="image/png" href="https://4ndrs.xyz/images/favicon-32x32.png" sizes="32x32">
-    <link rel="icon" type="image/png" href="https://4ndrs.xyz/images/favicon-16x16.png" sizes="16x16">
-
-    <meta name="generator" content="Hugo 0.69.0" />
-  </head>
-
-  
-  
-  <body class="colorscheme-light">
-    <main class="wrapper">
-      <nav class="navigation">
-  <section class="container">
-    <a class="navigation-title" href="https://4ndrs.xyz/">
-      4ndrs.xyz
-    </a>
-    
-    <input type="checkbox" id="menu-toggle" />
-    <label class="menu-button float-right" for="menu-toggle"><i class="fas fa-bars"></i></label>
-    <ul class="navigation-list">
-      
-        
-          <li class="navigation-item">
-            <a class="navigation-link" href="https://4ndrs.xyz/about/">About</a>
-          </li>
-        
-          <li class="navigation-item">
-            <a class="navigation-link" href="https://4ndrs.xyz/posts/">Blog</a>
-          </li>
-        
-          <li class="navigation-item">
-            <a class="navigation-link" href="https://4ndrs.xyz/categories/">Categories</a>
-          </li>
-        
-          <li class="navigation-item">
-            <a class="navigation-link" href="https://4ndrs.xyz/contact/">Contact me</a>
-          </li>
-        
-      
-      
-    </ul>
-    
-  </section>
-</nav>
-
-
-      <div class="content">
-        
-  <section class="container post">
-    <article>
-      <header>
-        <div class="post-title">
-          <h1 class="title">Multiple Tool Versions via Homebrew</h1>
-        </div>
-        <div class="post-meta">
-          <div class="date">
-            <span class="posted-on">
-              <i class="fas fa-calendar"></i>
-              <time datetime='2020-04-12T19:41:08&#43;02:00'>
-                April 12, 2020
-              </time>
-            </span>
-            <span class="reading-time">
-              <i class="fas fa-clock"></i>
-              5-minute read
-            </span>
-          </div>
-          <div class="categories">
-  <i class="fas fa-folder"></i>
-    <a href="https://4ndrs.xyz/categories/tools/">Tools</a></div>
-
-          <div class="tags">
-  <i class="fas fa-tag"></i>
-    <a href="https://4ndrs.xyz/tags/hugo/">hugo</a>
-      <span class="separator">•</span>
-    <a href="https://4ndrs.xyz/tags/homebrew/">homebrew</a>
-      <span class="separator">•</span>
-    <a href="https://4ndrs.xyz/tags/git/">git</a>
-      <span class="separator">•</span>
-    <a href="https://4ndrs.xyz/tags/cli/">cli</a></div>
-
-        </div>
-      </header>
-
-      <div>
-        
-        <p>Recently, I started using <a href="https://gohugo.io/">Hugo</a> with an older project.
+Shortly after that, I started another new project (this blog, BTW). Guess what happened? It broke again, this time because the installed version of hugo was too old and not compatible with the configured theme."><meta property="og:type" content="article"><meta property="og:url" content="https://4ndrs.xyz/posts/multiple-tool-versions-via-homebrew/"><meta property="article:published_time" content="2020-04-12T19:41:08+02:00"><meta property="article:modified_time" content="2020-04-12T19:41:08+02:00"><base href=https://4ndrs.xyz/posts/multiple-tool-versions-via-homebrew/><title>Multiple Tool Versions via Homebrew · 4ndrs.xyz</title><link rel=canonical href=https://4ndrs.xyz/posts/multiple-tool-versions-via-homebrew/><link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather:300,700%7CSource+Code+Pro:400,700&display=swap" rel=stylesheet><link rel=stylesheet href=https://use.fontawesome.com/releases/v5.11.2/css/all.css integrity=sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN crossorigin=anonymous><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin=anonymous><link rel=stylesheet href=https://4ndrs.xyz/css/coder.min.e5a71a2fc56568889ec70c1e4644389a8b2ac9fcba1bd3a89511f385ef5563c8.css integrity="sha256-5acaL8VlaIiexwweRkQ4mosqyfy6G9OolRHzhe9VY8g=" crossorigin=anonymous media=screen><link rel=icon type=image/png href=https://4ndrs.xyz/images/favicon-32x32.png sizes=32x32><link rel=icon type=image/png href=https://4ndrs.xyz/images/favicon-16x16.png sizes=16x16><meta name=generator content="Hugo 0.69.0"></head><body class=colorscheme-light><main class=wrapper><nav class=navigation><section class=container><a class=navigation-title href=https://4ndrs.xyz/>4ndrs.xyz</a>
+<input type=checkbox id=menu-toggle>
+<label class="menu-button float-right" for=menu-toggle><i class="fas fa-bars"></i></label><ul class=navigation-list><li class=navigation-item><a class=navigation-link href=https://4ndrs.xyz/about/>About</a></li><li class=navigation-item><a class=navigation-link href=https://4ndrs.xyz/posts/>Blog</a></li><li class=navigation-item><a class=navigation-link href=https://4ndrs.xyz/categories/>Categories</a></li><li class=navigation-item><a class=navigation-link href=https://4ndrs.xyz/contact/>Contact me</a></li></ul></section></nav><div class=content><section class="container post"><article><header><div class=post-title><h1 class=title>Multiple Tool Versions via Homebrew</h1></div><div class=post-meta><div class=date><span class=posted-on><i class="fas fa-calendar"></i><time datetime=2020-04-12T19:41:08+02:00>April 12, 2020</time></span>
+<span class=reading-time><i class="fas fa-clock"></i>5-minute read</span></div><div class=categories><i class="fas fa-folder"></i><a href=https://4ndrs.xyz/categories/tools/>Tools</a></div><div class=tags><i class="fas fa-tag"></i><a href=https://4ndrs.xyz/tags/hugo/>hugo</a>
+<span class=separator>•</span>
+<a href=https://4ndrs.xyz/tags/homebrew/>homebrew</a>
+<span class=separator>•</span>
+<a href=https://4ndrs.xyz/tags/git/>git</a>
+<span class=separator>•</span>
+<a href=https://4ndrs.xyz/tags/cli/>cli</a></div></div></header><div><p>Recently, I started using <a href=https://gohugo.io/>Hugo</a> with an older project.
 After I pulled the code and ran <code>hugo</code>, it failed.
-It turned out it was not yet compatible with the latest version that got automatically installed via <a href="%5Bhttps://%5D(https://brew.sh/)">Homebrew</a>.</p>
-<p>Well, no big deal, Homebrew allows for installing older versions of formulae.
-So I got it working.</p>
-<p>Shortly after that, I started another new project (this blog, BTW).
-Guess what happened? It broke again, this time because the installed version of <code>hugo</code> was too old and not compatible with the configured theme.</p>
-<p>Well, that is a bit of problem, but there is hope:</p>
-<h2 id="installing-an-old-version">Installing an old Version</h2>
-<p>First of all, let&rsquo;s see how to install the old version in the first place.</p>
-<p>The nice thing is that Homebrew entirely relies on files from a <a href="https://github.com/Homebrew/homebrew-core">public repository on GitHub</a>.
-The bad thing is that <strong>all</strong> default formulae come from this repository, and we have to inspect the commit history to find the desired version of a tool. This is a task that is most likely going to overwhelm the GitHub UI at some point.</p>
-<h3 id="get-the-last-versions-from-homebrew">Get the Last Versions from Homebrew</h3>
-<p>Each formula is <code>*.rb</code> file in the <code>Formula</code> directory of the Git repository, and each commit contains information about a tool and version.</p>
-<p>Hence, we only need to find the respective commit for what we want to install.
-For that, we can use either Homebrew itself or Git commands.</p>
-<h4 id="using-homebrew">Using Homebrew</h4>
-<p>Cloning and pulling the Homebrew repository just to inspect the history might seem a bit too much,
-and luckily has us covered:</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ brew log --oneline hugo
+It turned out it was not yet compatible with the latest version that got automatically installed via <a href=%5Bhttps://%5D(https://brew.sh/)>Homebrew</a>.</p><p>Well, no big deal, Homebrew allows for installing older versions of formulae.
+So I got it working.</p><p>Shortly after that, I started another new project (this blog, BTW).
+Guess what happened? It broke again, this time because the installed version of <code>hugo</code> was too old and not compatible with the configured theme.</p><p>Well, that is a bit of problem, but there is hope:</p><h2 id=installing-an-old-version>Installing an old Version</h2><p>First of all, let&rsquo;s see how to install the old version in the first place.</p><p>The nice thing is that Homebrew entirely relies on files from a <a href=https://github.com/Homebrew/homebrew-core>public repository on GitHub</a>.
+The bad thing is that <strong>all</strong> default formulae come from this repository, and we have to inspect the commit history to find the desired version of a tool. This is a task that is most likely going to overwhelm the GitHub UI at some point.</p><h3 id=get-the-last-versions-from-homebrew>Get the Last Versions from Homebrew</h3><p>Each formula is <code>*.rb</code> file in the <code>Formula</code> directory of the Git repository, and each commit contains information about a tool and version.</p><p>Hence, we only need to find the respective commit for what we want to install.
+For that, we can use either Homebrew itself or Git commands.</p><h4 id=using-homebrew>Using Homebrew</h4><p>Cloning and pulling the Homebrew repository just to inspect the history might seem a bit too much,
+and luckily has us covered:</p><div class=highlight><pre style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>$ brew log --oneline hugo
 </code></pre></div><p>This will output the last commits for the formula.
-However, the installation of Homebrew relies on a shallow clone of the corresponding Git repository, which means there is only partial data available, i.e., the desired version we want to install might not be included in the result anymore.</p>
-<p>If we are lucky, and the version is included in the output, we can proceed with the next step: <a href="#find-the-formula">Find the Formula</a>.
-Otherwise, we have to use Git to access the full history.</p>
-<h4 id="using-git">Using Git</h4>
-<p>In order to be able to have a look at the full history from the command line, we have to clone the repository,
-even though we only need to retreive the commit history, i.e.:</p>
-<ul>
-<li>We don&rsquo;t need any actual files.</li>
-<li>We don&rsquo;t need an actual checkout.</li>
-<li>We&rsquo;re only interested in the <code>master</code> branch.</li>
-</ul>
-<p>The following command gives us exactly that:</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ git clone <span style="color:#4070a0;font-weight:bold">\
-</span><span style="color:#4070a0;font-weight:bold"></span>  --filter<span style="color:#666">=</span>blob:none <span style="color:#4070a0;font-weight:bold">\
-</span><span style="color:#4070a0;font-weight:bold"></span>  --no-checkout <span style="color:#4070a0;font-weight:bold">\
-</span><span style="color:#4070a0;font-weight:bold"></span>  --single-branch <span style="color:#4070a0;font-weight:bold">\
-</span><span style="color:#4070a0;font-weight:bold"></span>  --branch master <span style="color:#4070a0;font-weight:bold">\
-</span><span style="color:#4070a0;font-weight:bold"></span>  https://github.com/Homebrew/homebrew-core.git
+However, the installation of Homebrew relies on a shallow clone of the corresponding Git repository, which means there is only partial data available, i.e., the desired version we want to install might not be included in the result anymore.</p><p>If we are lucky, and the version is included in the output, we can proceed with the next step: <a href=#find-the-formula>Find the Formula</a>.
+Otherwise, we have to use Git to access the full history.</p><h4 id=using-git>Using Git</h4><p>In order to be able to have a look at the full history from the command line, we have to clone the repository,
+even though we only need to retreive the commit history, i.e.:</p><ul><li>We don&rsquo;t need any actual files.</li><li>We don&rsquo;t need an actual checkout.</li><li>We&rsquo;re only interested in the <code>master</code> branch.</li></ul><p>The following command gives us exactly that:</p><div class=highlight><pre style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>$ git clone <span style=color:#4070a0;font-weight:700>\
+</span><span style=color:#4070a0;font-weight:700></span>  --filter<span style=color:#666>=</span>blob:none <span style=color:#4070a0;font-weight:700>\
+</span><span style=color:#4070a0;font-weight:700></span>  --no-checkout <span style=color:#4070a0;font-weight:700>\
+</span><span style=color:#4070a0;font-weight:700></span>  --single-branch <span style=color:#4070a0;font-weight:700>\
+</span><span style=color:#4070a0;font-weight:700></span>  --branch master <span style=color:#4070a0;font-weight:700>\
+</span><span style=color:#4070a0;font-weight:700></span>  https://github.com/Homebrew/homebrew-core.git
 </code></pre></div><p>Although we did not check out any branch, we still received more than 260 MB of commit history data.
-Obviously, we would like to avoid that, if possible.</p>
-<p>After cloning the repository (history information), we can check the logs for commits related to the tool and version we are interested in, <code>hugo</code> and version <code>0.41</code> in this example:</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ git log --oneline | grep hugo | grep -F 0.41
-</code></pre></div><ol>
-<li>Get the commit history in one-line format</li>
-<li>Filter all commits related to <code>hugo</code></li>
-<li>Filter all commits related to version <code>0.41</code> (using a fixed string, otherwise the <code>.</code> had to be escaped.</li>
-</ol>
-<p>This returns the following result:</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">b1e187384b hugo: update 0.41 bottle.
+Obviously, we would like to avoid that, if possible.</p><p>After cloning the repository (history information), we can check the logs for commits related to the tool and version we are interested in, <code>hugo</code> and version <code>0.41</code> in this example:</p><div class=highlight><pre style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback>$ git log --oneline | grep hugo | grep -F 0.41
+</code></pre></div><ol><li>Get the commit history in one-line format</li><li>Filter all commits related to <code>hugo</code></li><li>Filter all commits related to version <code>0.41</code> (using a fixed string, otherwise the <code>.</code> had to be escaped.</li></ol><p>This returns the following result:</p><div class=highlight><pre style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback>b1e187384b hugo: update 0.41 bottle.
 824a875022 hugo 0.41
-</code></pre></div><p>We are only interested in the most recent commit for the version.</p>
-<h3 id="find-the-formula">Find the Formula</h3>
-<p>With the commit ID, we can identify the file required for the installation of the version at that time, if necessary:</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ git diff-tree --no-commit-id --name-only -r b1e187384b
+</code></pre></div><p>We are only interested in the most recent commit for the version.</p><h3 id=find-the-formula>Find the Formula</h3><p>With the commit ID, we can identify the file required for the installation of the version at that time, if necessary:</p><div class=highlight><pre style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>$ git diff-tree --no-commit-id --name-only -r b1e187384b
 Formula/hugo.rb
-</code></pre></div><p>Usually, this result should not be a big surprise since all formulae are located in the <code>Formula</code> directory, and the information about a formula also cover this:</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ brew info hugo
-hugo: stable 0.69.0 <span style="color:#666">(</span>bottled<span style="color:#666">)</span>, HEAD
+</code></pre></div><p>Usually, this result should not be a big surprise since all formulae are located in the <code>Formula</code> directory, and the information about a formula also cover this:</p><div class=highlight><pre style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>$ brew info hugo
+hugo: stable 0.69.0 <span style=color:#666>(</span>bottled<span style=color:#666>)</span>, HEAD
 Configurable static site generator
 https://gohugo.io/
 From: https://github.com/Homebrew/homebrew-core/blob/master/Formula/hugo.rb
-</code></pre></div><h3 id="install-from-file-path-via-homebrew">Install from File Path via Homebrew</h3>
-<p>Now, we can use the retrieved information to install that the formula at a specific version via Homebrew,
-regardless of how old it actually is:</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ brew installl https://raw.githubusercontent.com/Homebrew/homebrew-core/824a875022/Formula/hugo.rb
+</code></pre></div><h3 id=install-from-file-path-via-homebrew>Install from File Path via Homebrew</h3><p>Now, we can use the retrieved information to install that the formula at a specific version via Homebrew,
+regardless of how old it actually is:</p><div class=highlight><pre style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>$ brew installl https://raw.githubusercontent.com/Homebrew/homebrew-core/824a875022/Formula/hugo.rb
 </code></pre></div><p>Bringing the it all together with <code>${FORMULA}</code> and <code>${VERSION}</code> representing what we want to install,
-we can use the following snippet to install a formula based on the Git commit history:</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ <span style="color:#bb60d5">COMMIT_ID</span><span style="color:#666">=</span><span style="color:#007020;font-weight:bold">$(</span>git log --oneline | grep <span style="color:#4070a0">&#34;</span><span style="color:#70a0d0;font-style:italic">${</span><span style="color:#bb60d5">FORMULA</span><span style="color:#70a0d0;font-style:italic">}</span><span style="color:#4070a0">&#34;</span> | grep -F <span style="color:#4070a0">&#34;</span><span style="color:#70a0d0;font-style:italic">${</span><span style="color:#bb60d5">VERSION</span><span style="color:#70a0d0;font-style:italic">}</span><span style="color:#4070a0">&#34;</span> | awk <span style="color:#4070a0">&#39;FNR==1 { print $1 }&#39;</span><span style="color:#007020;font-weight:bold">)</span>
-$ <span style="color:#bb60d5">FILE</span><span style="color:#666">=</span><span style="color:#007020;font-weight:bold">$(</span>git diff-tree --no-commit-id --name-only -r <span style="color:#70a0d0;font-style:italic">${</span><span style="color:#bb60d5">COMMIT_ID</span><span style="color:#70a0d0;font-style:italic">}</span><span style="color:#007020;font-weight:bold">)</span>
-$ brew install <span style="color:#4070a0">&#34;https://raw.githubusercontent.com/Homebrew/homebrew-core/</span><span style="color:#70a0d0;font-style:italic">${</span><span style="color:#bb60d5">COMMIT_ID</span><span style="color:#70a0d0;font-style:italic">}</span><span style="color:#4070a0">/</span><span style="color:#70a0d0;font-style:italic">${</span><span style="color:#bb60d5">FILE</span><span style="color:#70a0d0;font-style:italic">}</span><span style="color:#4070a0">&#34;</span>
-</code></pre></div><h2 id="prevent-old-version-from-upgrades">Prevent old Version from Upgrades</h2>
-<p>If you only want to ensure that the installed old version does not get overridden by automatic upgrades that get installed via <code>brew upgrade</code>, you can &ldquo;pin&rdquo; this version:</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ brew pin hugo
-</code></pre></div><p>This can be undone with the below command:</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ brew unpin hugo
-</code></pre></div><h2 id="install-latest-version">Install latest Version</h2>
-<p>After we have successfully installed the outdated version of our tool,
-let&rsquo;s have look at how to install the latest version without upgrading, i.e., overriding the previous version.</p>
-<h3 id="unlink-the-installed-version">Unlink the installed Version</h3>
-<p>By unlinking the previously installed version, we simulate the state without the tool being installed:</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ sh brew unlink hugo
-</code></pre></div><p>Now, it will not be possible to use the command:</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ hugo version
-zsh: <span style="color:#007020">command</span> not found: hugo
-</code></pre></div><h3 id="install-new-version">Install new Version</h3>
-<p>To install the latest version, first get the latest formulae and then install it using the following command:</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ brew update
+we can use the following snippet to install a formula based on the Git commit history:</p><div class=highlight><pre style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>$ <span style=color:#bb60d5>COMMIT_ID</span><span style=color:#666>=</span><span style=color:#007020;font-weight:700>$(</span>git log --oneline | grep <span style=color:#4070a0>&#34;</span><span style=color:#70a0d0;font-style:italic>${</span><span style=color:#bb60d5>FORMULA</span><span style=color:#70a0d0;font-style:italic>}</span><span style=color:#4070a0>&#34;</span> | grep -F <span style=color:#4070a0>&#34;</span><span style=color:#70a0d0;font-style:italic>${</span><span style=color:#bb60d5>VERSION</span><span style=color:#70a0d0;font-style:italic>}</span><span style=color:#4070a0>&#34;</span> | awk <span style=color:#4070a0>&#39;FNR==1 { print $1 }&#39;</span><span style=color:#007020;font-weight:700>)</span>
+$ <span style=color:#bb60d5>FILE</span><span style=color:#666>=</span><span style=color:#007020;font-weight:700>$(</span>git diff-tree --no-commit-id --name-only -r <span style=color:#70a0d0;font-style:italic>${</span><span style=color:#bb60d5>COMMIT_ID</span><span style=color:#70a0d0;font-style:italic>}</span><span style=color:#007020;font-weight:700>)</span>
+$ brew install <span style=color:#4070a0>&#34;https://raw.githubusercontent.com/Homebrew/homebrew-core/</span><span style=color:#70a0d0;font-style:italic>${</span><span style=color:#bb60d5>COMMIT_ID</span><span style=color:#70a0d0;font-style:italic>}</span><span style=color:#4070a0>/</span><span style=color:#70a0d0;font-style:italic>${</span><span style=color:#bb60d5>FILE</span><span style=color:#70a0d0;font-style:italic>}</span><span style=color:#4070a0>&#34;</span>
+</code></pre></div><h2 id=prevent-old-version-from-upgrades>Prevent old Version from Upgrades</h2><p>If you only want to ensure that the installed old version does not get overridden by automatic upgrades that get installed via <code>brew upgrade</code>, you can &ldquo;pin&rdquo; this version:</p><div class=highlight><pre style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>$ brew pin hugo
+</code></pre></div><p>This can be undone with the below command:</p><div class=highlight><pre style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>$ brew unpin hugo
+</code></pre></div><h2 id=install-latest-version>Install latest Version</h2><p>After we have successfully installed the outdated version of our tool,
+let&rsquo;s have look at how to install the latest version without upgrading, i.e., overriding the previous version.</p><h3 id=unlink-the-installed-version>Unlink the installed Version</h3><p>By unlinking the previously installed version, we simulate the state without the tool being installed:</p><div class=highlight><pre style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>$ sh brew unlink hugo
+</code></pre></div><p>Now, it will not be possible to use the command:</p><div class=highlight><pre style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>$ hugo version
+zsh: <span style=color:#007020>command</span> not found: hugo
+</code></pre></div><h3 id=install-new-version>Install new Version</h3><p>To install the latest version, first get the latest formulae and then install it using the following command:</p><div class=highlight><pre style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>$ brew update
 $ brew install hugo
-</code></pre></div><p>If we run the <code>version</code> command again, we will get the expected output:</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ hugo version
+</code></pre></div><p>If we run the <code>version</code> command again, we will get the expected output:</p><div class=highlight><pre style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>$ hugo version
 Hugo Static Site Generator v0.69.0/extended darwin/amd64 BuildDate: unknown
-</code></pre></div><h2 id="switch-between-installed-versions">Switch between Installed Versions</h2>
-<p>Now that we have multiple versions of our desired tool available, it is possible to switch between them whenever needed.</p>
-<h3 id="check-available-versions">Check available Versions</h3>
-<p>To check which versions are actually available, use this command:</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ brew list --versions hugo
-</code></pre></div><h3 id="switch-to-another-version">Switch to another Version</h3>
-<p>Assuming that you are still using the latest version that was last installed, we can use the following command to switch back to the outdated version used before that:</p>
-<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ brew switch hugo 0.41
-</code></pre></div><p>That&rsquo;s all!</p>
-<p>Internally, Homebrew is updating symlinks to point to the respective version we are specifying in the <code>switch</code> command.</p>
-
-      </div>
-
-
-      <footer>
-        
-
-
-        
-
-
-<h2>See Also</h2>
-<ul>
-  
-  <li><a href="https://4ndrs.xyz/contact/">Say Hello</a></li>
-  
-  <li><a href="https://4ndrs.xyz/about/">About</a></li>
-  
-  <li><a href="https://4ndrs.xyz/posts/2017-06-19-building-and-testing-golang-applications-with-travisci-and-coveralls/">Building and Testing Golang Applications With Travis CI and Coveralls</a></li>
-  
-</ul>
-
-
-        
-        
-        
-      </footer>
-    </article>
-
-    
-  </section>
-
-      </div>
-
-      
-  <footer class="footer">
-    <section class="container">
-      
-      
-        ©
-        
-          2017 -
-        
-        2020
-         Andreas Siegel 
-      
-      
-      
-        
-      
-    </section>
-  </footer>
-
-    </main>
-
-    
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-	ga('create', 'UA-123-45', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-
-
-    
-
-  </body>
-
-</html>
+</code></pre></div><h2 id=switch-between-installed-versions>Switch between Installed Versions</h2><p>Now that we have multiple versions of our desired tool available, it is possible to switch between them whenever needed.</p><h3 id=check-available-versions>Check available Versions</h3><p>To check which versions are actually available, use this command:</p><div class=highlight><pre style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>$ brew list --versions hugo
+</code></pre></div><h3 id=switch-to-another-version>Switch to another Version</h3><p>Assuming that you are still using the latest version that was last installed, we can use the following command to switch back to the outdated version used before that:</p><div class=highlight><pre style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>$ brew switch hugo 0.41
+</code></pre></div><p>That&rsquo;s all!</p><p>Internally, Homebrew is updating symlinks to point to the respective version we are specifying in the <code>switch</code> command.</p></div><footer><h2>See Also</h2><ul><li><a href=https://4ndrs.xyz/contact/>Say Hello</a></li><li><a href=https://4ndrs.xyz/about/>About</a></li><li><a href=https://4ndrs.xyz/posts/2017-06-19-building-and-testing-golang-applications-with-travisci-and-coveralls/>Building and Testing Golang Applications With Travis CI and Coveralls</a></li></ul></footer></article></section></div><footer class=footer><section class=container>©
+2017 -
+2020
+Andreas Siegel</section></footer></main><script type=application/javascript>var doNotTrack=false;if(!doNotTrack){(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');ga('create','UA-431647-14','auto');ga('send','pageview');}</script></body></html>

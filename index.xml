@@ -1,77 +1,16 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>4ndrs.xyz</title>
-    <link>https://4ndrs.xyz/</link>
-    <description>Recent content on 4ndrs.xyz</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Sun, 12 Apr 2020 19:21:01 +0200</lastBuildDate>
-    
-	<atom:link href="https://4ndrs.xyz/index.xml" rel="self" type="application/rss+xml" />
-    
-    
-    <item>
-      <title>Multiple Tool Versions via Homebrew</title>
-      <link>https://4ndrs.xyz/posts/multiple-tool-versions-via-homebrew/</link>
-      <pubDate>Sun, 12 Apr 2020 19:41:08 +0200</pubDate>
-      
-      <guid>https://4ndrs.xyz/posts/multiple-tool-versions-via-homebrew/</guid>
-      <description>Recently, I started using Hugo with an older project. After I pulled the code and ran hugo, it failed. It turned out it was not yet compatible with the latest version that got automatically installed via Homebrew.
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>4ndrs.xyz</title><link>https://4ndrs.xyz/</link><description>Recent content on 4ndrs.xyz</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 12 Apr 2020 19:21:01 +0200</lastBuildDate><atom:link href="https://4ndrs.xyz/index.xml" rel="self" type="application/rss+xml"/><item><title>Multiple Tool Versions via Homebrew</title><link>https://4ndrs.xyz/posts/multiple-tool-versions-via-homebrew/</link><pubDate>Sun, 12 Apr 2020 19:41:08 +0200</pubDate><guid>https://4ndrs.xyz/posts/multiple-tool-versions-via-homebrew/</guid><description>Recently, I started using Hugo with an older project. After I pulled the code and ran hugo, it failed. It turned out it was not yet compatible with the latest version that got automatically installed via Homebrew.
 Well, no big deal, Homebrew allows for installing older versions of formulae. So I got it working.
-Shortly after that, I started another new project (this blog, BTW). Guess what happened? It broke again, this time because the installed version of hugo was too old and not compatible with the configured theme.</description>
-    </item>
-    
-    <item>
-      <title>Say Hello</title>
-      <link>https://4ndrs.xyz/contact/</link>
-      <pubDate>Sun, 12 Apr 2020 19:21:01 +0200</pubDate>
-      
-      <guid>https://4ndrs.xyz/contact/</guid>
-      <description>Choose whatever you like to reach out to me and say Hi!
-   WhatsApp
-  Twitter Direct Message
-  Facebook Messenger
-  E-Mail
-   </description>
-    </item>
-    
-    <item>
-      <title>About</title>
-      <link>https://4ndrs.xyz/about/</link>
-      <pubDate>Sun, 12 Apr 2020 19:14:37 +0200</pubDate>
-      
-      <guid>https://4ndrs.xyz/about/</guid>
-      <description>Personal   Photo enthusiast
-  Cyclist
-  Scandinavia Traveller
-  Hockey Fan
-  Book Lover
-     Professional   IT Architect/Developer
-  Scrum Master
-     </description>
-    </item>
-    
-    <item>
-      <title>Building and Testing Golang Applications With Travis CI and Coveralls</title>
-      <link>https://4ndrs.xyz/posts/2017-06-19-building-and-testing-golang-applications-with-travisci-and-coveralls/</link>
-      <pubDate>Mon, 19 Jun 2017 00:00:00 +0200</pubDate>
-      
-      <guid>https://4ndrs.xyz/posts/2017-06-19-building-and-testing-golang-applications-with-travisci-and-coveralls/</guid>
-      <description>Build automation and automatic tests are a really nice thing I am used to when working on Java projects, but since I started to learn Golang recently, I also wanted to have these nice README badges for those projects as well.
- Here is how you can set everything up using the free tools Travis CI and Coveralls:
-   Simple Build Automation Getting started with automatic builds is really easy.</description>
-    </item>
-    
-    <item>
-      <title>Getting started with Terraform, AWS &amp; Docker</title>
-      <link>https://4ndrs.xyz/posts/2017-05-26-getting-started-with-terraform-aws-docker/</link>
-      <pubDate>Sat, 27 May 2017 00:00:00 +0200</pubDate>
-      
-      <guid>https://4ndrs.xyz/posts/2017-05-26-getting-started-with-terraform-aws-docker/</guid>
-      <description>This article is an introduction to Terraform and how to use it to set up a basic infrastructure on Amazon Web Services (AWS) to run a simple web service Docker container.
- Terraform is an infrastructure-as-code (IAC) tool, that allows for efficiently setting up infrastructure by defining the desired state, which makes it different than many other tools. For more on why you should be using Terraform, check out Gruntwork&amp;#8217;s blog post Why we use Terraform and not Chef, Puppet, Ansible, SaltStack, or CloudFormation.</description>
-    </item>
-    
-  </channel>
-</rss>
+Shortly after that, I started another new project (this blog, BTW). Guess what happened? It broke again, this time because the installed version of hugo was too old and not compatible with the configured theme.</description></item><item><title>Say Hello</title><link>https://4ndrs.xyz/contact/</link><pubDate>Sun, 12 Apr 2020 19:21:01 +0200</pubDate><guid>https://4ndrs.xyz/contact/</guid><description>Choose whatever you like to reach out to me and say Hi!
+WhatsApp
+Twitter Direct Message
+Facebook Messenger
+E-Mail</description></item><item><title>About</title><link>https://4ndrs.xyz/about/</link><pubDate>Sun, 12 Apr 2020 19:14:37 +0200</pubDate><guid>https://4ndrs.xyz/about/</guid><description>Personal Photo enthusiast
+Cyclist
+Scandinavia Traveller
+Hockey Fan
+Book Lover
+Professional IT Architect/Developer
+Scrum Master</description></item><item><title>Building and Testing Golang Applications With Travis CI and Coveralls</title><link>https://4ndrs.xyz/posts/2017-06-19-building-and-testing-golang-applications-with-travisci-and-coveralls/</link><pubDate>Mon, 19 Jun 2017 00:00:00 +0200</pubDate><guid>https://4ndrs.xyz/posts/2017-06-19-building-and-testing-golang-applications-with-travisci-and-coveralls/</guid><description>Build automation and automatic tests are a really nice thing I am used to when working on Java projects, but since I started to learn Golang recently, I also wanted to have these nice README badges for those projects as well.
+Here is how you can set everything up using the free tools Travis CI and Coveralls:
+Simple Build Automation Getting started with automatic builds is really easy.</description></item><item><title>Getting started with Terraform, AWS &amp; Docker</title><link>https://4ndrs.xyz/posts/2017-05-26-getting-started-with-terraform-aws-docker/</link><pubDate>Sat, 27 May 2017 00:00:00 +0200</pubDate><guid>https://4ndrs.xyz/posts/2017-05-26-getting-started-with-terraform-aws-docker/</guid><description>This article is an introduction to Terraform and how to use it to set up a basic infrastructure on Amazon Web Services (AWS) to run a simple web service Docker container.
+Terraform is an infrastructure-as-code (IAC) tool, that allows for efficiently setting up infrastructure by defining the desired state, which makes it different than many other tools. For more on why you should be using Terraform, check out Gruntwork&amp;#8217;s blog post Why we use Terraform and not Chef, Puppet, Ansible, SaltStack, or CloudFormation.</description></item></channel></rss>
