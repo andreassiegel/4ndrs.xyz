@@ -1,0 +1,93 @@
+---
+title: "Building and Testing Golang Applications With Travisci and Coveralls"
+date: 2020-04-12T13:46:21+02:00
+draft: false
+---
+
+= Building and Testing Golang Applications with Travis CI and Coveralls
+
+:published_at: 2017-06-19
+:hp-tags: go, golang, travis, coveralls, build_automation, ci, test_coverage, build_status
+
+Build automation and automatic tests are a really nice thing I am used to when working on Java projects, but since I started to learn Golang recently, I also wanted to have these nice README badges for those projects as well.
+
+Here is how you can set everything up using the free tools https://travis-ci.org/[Travis CI] and https://coveralls.io/[Coveralls]:
+
+== Simple Build Automation
+
+Getting started with automatic builds is really easy. Just place a `.travis.yml` file in your repository and you are done. The defaults should work well for projects that use only public dependencies:
+
+.`.travis.yml`
+[source,yaml]
+----
+language: go
+
+go:
+  - master
+----
+
+Once you have that file pushed to the repository, you can login to https://travis-ci.org/[Travis] and switch on automatic builds for the repository. 
+
+This will make Travis build your project, and run the tests, if any, on each `git push`.
+
+== Test Coverage Reports
+
+However, this will not give you any coverage reports. The outcome will still be nothing more than the pure build status -- whether it passed or failed.
+
+If you want to additionally capture test coverage data, you can switch on test converage reporting for a repository on https://coveralls.io/[Coveralls].
+
+This will get you a repository token, you need to add as a `COVERALLS_REPO_TOKEN` environment variable to the corresponding Travis build settings. Do not forget to make sure to set it as a secure variable so that its value is not printed to the public log.
+
+=== Simple Usage for a Single Package
+
+If your Go project does not consist of more than one package, you can likely use the basic Coveralls configuration. Add the following to your previous `.travis.yml`:
+
+.`.travis.yml`
+[source,yaml]
+----
+install:
+   - go get golang.org/x/tools/cmd/cover
+   - go get github.com/mattn/goveralls
+   
+ script:
+    - go test -v -covermode=count -coverprofile=coverage.out
+    - $HOME/gopath/bin/goveralls -coverprofile=coverage.out -service=travis-ci -repotoken $COVERALLS_REPO_TOKEN
+----
+
+Note that this will not work if your main package does not have tests, and it also will not report test coverage data for subpackages.
+
+=== Configuration for Multi-package projects
+
+In order to be able to run also the subpackage tests and report on their results, you have to use the configuration below, again added to the previous version of the Travis file:
+
+.`.travis.yml`
+[source,yaml]
+----
+install:
+  - go get golang.org/x/tools/cmd/cover
+  - go get github.com/mattn/goveralls
+  - go get github.com/go-playground/overalls
+
+script:
+  - go test -v ./...
+  - overalls -project=github.com/andreassiegel/timewatch -covermode=count
+  - $HOME/gopath/bin/goveralls -coverprofile=overalls.coverprofile -service=travis-ci -repotoken $COVERALLS_REPO_TOKEN
+----
+
+This installs and uses a multi-package coverprofile for https://github.com/mattn/goveralls[Goveralls], and runs all tests in the current directory and its subdirectories before reporting the results to Coveralls.
+
+== Build Status and Test Coverage Badges
+
+Now you are ready to add those nice little badges to the README file of your repository on GitHub.
+A nice and reusable way of doing that is to use variables for username, the project-specific information that are needed to display the status badges.
+
+When you are using AsciiDoc you can set them as follows, preferably in the settings section at the top of your README file:
+
+   ifdef::env-github[:USER: <your GitHub username>]
+   ifdef::env-github[:REPO: <your repository>]
+   ifdef::env-github[:BRANCH: master]
+
+With that in place, the code needed to display the actual badges will be the same for every single project:
+
+	image:https://travis-ci.org/{USER}/{REPO}.svg?branch={BRANCH}["Build Status", link="https://travis-ci.org/{USER}/{REPO}"]
+	image:https://coveralls.io/repos/github/{USER}/{REPO}/badge.svg?branch={BRANCH}["Test Coverage", link="https://coveralls.io/github/{USER}/{REPO}?branch={BRANCH}"]
