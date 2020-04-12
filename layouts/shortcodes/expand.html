@@ -1,0 +1,11 @@
+{{ $_hugo_config := `{ "version": 1 }` }}
+{{ $id := .Get "id" | default "collapsible" }}
+<div class="wrap-collabsible">
+  <input id="{{ $id }}" class="toggle" type="checkbox" {{ if .Get "expanded" | default true }}checked{{ end }}>
+  <label for="{{ $id }}" class="lbl-toggle">{{ .Get "title" | default "Expand" }}</label>
+  <div class="collapsible-content">
+    <div class="content-inner">
+      {{.Inner | safeHTML}}
+    </div>
+  </div>
+</div>
