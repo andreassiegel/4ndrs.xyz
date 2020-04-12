@@ -17,7 +17,8 @@
       <pubDate>Sun, 12 Apr 2020 12:18:09 +0200</pubDate>
       
       <guid>http://andreassiegel.github.io/blog/posts/my-first-post/</guid>
-      <description>Hello World This is some text.</description>
+      <description>Hello World This is some text.
+echo &amp;#34;Hello World&amp;#34; </description>
     </item>
     
   </channel>
