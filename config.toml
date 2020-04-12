@@ -1,5 +1,0 @@
-baseURL = "http://andreassiegel.github.io/blog/"
-languageCode = "en-us"
-title = "Code Notes"
-theme = "ananke"
-publishDir = "public"
