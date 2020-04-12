@@ -11,7 +11,7 @@ pygmentsstyle: friendly
 pygmentscodefences: true
 pygmentscodefencesguesssyntax: true
 disqusShortname:
-googleAnalytics: UA-123-45
+googleAnalytics: UA-431647-14
 related:
   threshold: 80
   includeNewer: true
