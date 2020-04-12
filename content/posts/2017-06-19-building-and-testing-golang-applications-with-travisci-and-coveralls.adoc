@@ -1,6 +1,6 @@
 ---
 title: "Building and Testing Golang Applications With Travisci and Coveralls"
-date: 2020-04-12T13:46:21+02:00
+date: 2017-06-19T00:00:00+02:00
 draft: false
 ---
 
