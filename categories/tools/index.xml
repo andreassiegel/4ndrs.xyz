@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tools on 4ndrs.xyz</title>
+    <link>http://4ndrs.xyz/categories/tools/</link>
+    <description>Recent content in Tools on 4ndrs.xyz</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 12 Apr 2020 19:41:08 +0200</lastBuildDate>
+    
+	<atom:link href="http://4ndrs.xyz/categories/tools/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Multiple Tool Versions via Homebrew</title>
+      <link>http://4ndrs.xyz/posts/multiple-tool-versions-via-homebrew/</link>
+      <pubDate>Sun, 12 Apr 2020 19:41:08 +0200</pubDate>
+      
+      <guid>http://4ndrs.xyz/posts/multiple-tool-versions-via-homebrew/</guid>
+      <description>Recently, I started using Hugo with an older project. After I pulled the code and ran hugo, it failed. It turned out it was not yet compatible with the latest version that got automatically installed via Homebrew.
+Well, no big deal, Homebrew allows for installing older versions of formulae. So I got it working.
+Shortly after that, I started another new project (this blog, BTW). Guess what happened? It broke again, this time because the installed version of hugo was too old and not compatible with the configured theme.</description>
+    </item>
+    
+  </channel>
+</rss>
