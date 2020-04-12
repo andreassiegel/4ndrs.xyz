@@ -6,7 +6,7 @@
     <description>Recent content in Posts on Code Notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 12 Apr 2020 13:46:21 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 19 Jun 2017 00:00:00 +0200</lastBuildDate>
     
 	<atom:link href="http://andreassiegel.github.io/blog/posts/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,7 +14,7 @@
     <item>
       <title>Building and Testing Golang Applications With Travisci and Coveralls</title>
       <link>http://andreassiegel.github.io/blog/posts/2017-06-19-building-and-testing-golang-applications-with-travisci-and-coveralls/</link>
-      <pubDate>Sun, 12 Apr 2020 13:46:21 +0200</pubDate>
+      <pubDate>Mon, 19 Jun 2017 00:00:00 +0200</pubDate>
       
       <guid>http://andreassiegel.github.io/blog/posts/2017-06-19-building-and-testing-golang-applications-with-travisci-and-coveralls/</guid>
       <description>Build automation and automatic tests are a really nice thing I am used to when working on Java projects, but since I started to learn Golang recently, I also wanted to have these nice README badges for those projects as well.
@@ -25,7 +25,7 @@
     <item>
       <title>Getting started with Terraform, AWS &amp; Docker</title>
       <link>http://andreassiegel.github.io/blog/posts/2017-05-26-getting-started-with-terraform-aws-docker/</link>
-      <pubDate>Sat, 27 May 2017 13:40:51 +0200</pubDate>
+      <pubDate>Sat, 27 May 2017 00:00:00 +0200</pubDate>
       
       <guid>http://andreassiegel.github.io/blog/posts/2017-05-26-getting-started-with-terraform-aws-docker/</guid>
       <description>This article is an introduction to Terraform and how to use it to set up a basic infrastructure on Amazon Web Services (AWS) to run a simple web service Docker container.
