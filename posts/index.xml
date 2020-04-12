@@ -6,19 +6,30 @@
     <description>Recent content in Posts on Code Notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 12 Apr 2020 12:18:09 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 12 Apr 2020 13:46:21 +0200</lastBuildDate>
     
 	<atom:link href="http://andreassiegel.github.io/blog/posts/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>My First Post</title>
-      <link>http://andreassiegel.github.io/blog/posts/my-first-post/</link>
-      <pubDate>Sun, 12 Apr 2020 12:18:09 +0200</pubDate>
+      <title>Building and Testing Golang Applications With Travisci and Coveralls</title>
+      <link>http://andreassiegel.github.io/blog/posts/2017-06-19-building-and-testing-golang-applications-with-travisci-and-coveralls/</link>
+      <pubDate>Sun, 12 Apr 2020 13:46:21 +0200</pubDate>
       
-      <guid>http://andreassiegel.github.io/blog/posts/my-first-post/</guid>
-      <description>Hello World This is some text.
-echo &amp;#34;Hello World&amp;#34; </description>
+      <guid>http://andreassiegel.github.io/blog/posts/2017-06-19-building-and-testing-golang-applications-with-travisci-and-coveralls/</guid>
+      <description>Build automation and automatic tests are a really nice thing I am used to when working on Java projects, but since I started to learn Golang recently, I also wanted to have these nice README badges for those projects as well.
+ Here is how you can set everything up using the free tools Travis CI and Coveralls:
+   Simple Build Automation Getting started with automatic builds is really easy.</description>
+    </item>
+    
+    <item>
+      <title>Getting started with Terraform, AWS &amp; Docker</title>
+      <link>http://andreassiegel.github.io/blog/posts/2017-05-26-getting-started-with-terraform-aws-docker/</link>
+      <pubDate>Sat, 27 May 2017 13:40:51 +0200</pubDate>
+      
+      <guid>http://andreassiegel.github.io/blog/posts/2017-05-26-getting-started-with-terraform-aws-docker/</guid>
+      <description>This article is an introduction to Terraform and how to use it to set up a basic infrastructure on Amazon Web Services (AWS) to run a simple web service Docker container.
+ Terraform is an infrastructure-as-code (IAC) tool, that allows for efficiently setting up infrastructure by defining the desired state, which makes it different than many other tools. For more on why you should be using Terraform, check out Gruntwork&amp;#8217;s blog post Why we use Terraform and not Chef, Puppet, Ansible, SaltStack, or CloudFormation.</description>
     </item>
     
   </channel>

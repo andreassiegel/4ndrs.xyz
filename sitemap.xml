@@ -3,11 +3,27 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>http://andreassiegel.github.io/blog/categories/</loc>
+    <loc>http://andreassiegel.github.io/blog/posts/2017-06-19-building-and-testing-golang-applications-with-travisci-and-coveralls/</loc>
+    <lastmod>2020-04-12T13:46:21+02:00</lastmod>
   </url>
   
   <url>
     <loc>http://andreassiegel.github.io/blog/</loc>
+    <lastmod>2020-04-12T13:46:21+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://andreassiegel.github.io/blog/posts/</loc>
+    <lastmod>2020-04-12T13:46:21+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://andreassiegel.github.io/blog/posts/2017-05-26-getting-started-with-terraform-aws-docker/</loc>
+    <lastmod>2017-05-27T13:40:51+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://andreassiegel.github.io/blog/categories/</loc>
   </url>
   
   <url>
