@@ -7,3 +7,7 @@ draft: true
 # Hello World
 
 This is some text.
+
+```sh
+echo "Hello World"
+```
