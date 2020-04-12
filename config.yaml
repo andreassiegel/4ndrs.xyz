@@ -1,4 +1,4 @@
-baseURL: 'http://4ndrs.xyz/'
+baseURL: 'https://4ndrs.xyz/'
 languageCode: en-us
 title: 4ndrs.xyz
 theme: hugo-coder
