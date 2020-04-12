@@ -1,13 +1,18 @@
 ---
-title: "Getting started with Terraform, AWS & Docker"
-date: 2017-05-27T00:00:00+02:00
+date: "2017-05-27T00:00:00+02:00"
 draft: false
+title: Getting started with Terraform, AWS & Docker
+categories:
+- DevOps
+tags:
+- docker
+- aws
+- terraform
+- infrastructure-as-code
+- iac
 ---
 
 = Getting started with Terraform, AWS & Docker
-
-:published_at: 2017-05-27
-:hp-tags: Docker, Terraform, Infrastructure-as-code, IAC, AWS, DevOps
 
 This article is an introduction to https://www.terraform.io/[Terraform] and how to use it to set up a basic infrastructure on https://aws.amazon.com[Amazon Web Services (AWS)] to run a simple web service https://www.docker.com/[Docker] container.
 

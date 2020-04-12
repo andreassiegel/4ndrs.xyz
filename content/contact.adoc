@@ -1,0 +1,12 @@
+---
+title: "Say Hello"
+date: 2020-04-12T19:21:01+02:00
+draft: false
+---
+
+Choose whatever you like to reach out to me and say _Hi!_
+
+- https://wa.me/4915254125499[WhatsApp]
+- https://twitter.com/messages/compose?recipient_id=180073658&text=Hi![Twitter Direct Message]
+- https://m.me/andreas.siegel.dresden[Facebook Messenger]
+- mailto:mail@andreassiegel.de[E-Mail]

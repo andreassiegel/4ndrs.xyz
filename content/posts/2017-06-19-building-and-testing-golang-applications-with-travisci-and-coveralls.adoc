@@ -1,13 +1,21 @@
 ---
-title: "Building and Testing Golang Applications With Travisci and Coveralls"
-date: 2017-06-19T00:00:00+02:00
+date: "2017-06-19T00:00:00+02:00"
 draft: false
+title: Building and Testing Golang Applications With Travis CI and Coveralls
+categories:
+- Development
+tags:
+- go
+- golang
+- travis
+- coveralls
+- build-automation
+- ci
+- test-coverage
+- build-status
 ---
 
 = Building and Testing Golang Applications with Travis CI and Coveralls
-
-:published_at: 2017-06-19
-:hp-tags: go, golang, travis, coveralls, build_automation, ci, test_coverage, build_status
 
 Build automation and automatic tests are a really nice thing I am used to when working on Java projects, but since I started to learn Golang recently, I also wanted to have these nice README badges for those projects as well.
 
