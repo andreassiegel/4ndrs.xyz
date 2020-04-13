@@ -21,7 +21,7 @@ So I got it working.
 Shortly after that, I started another new project (this blog, BTW).
 Guess what happened? It broke again, this time because the installed version of `hugo` was too old and not compatible with the configured theme.
 
-Well, that is a bit of problem, but there is hope:
+Well, that is a bit of a problem, but there is hope:
 
 ## Installing an old Version
 
@@ -32,7 +32,7 @@ The bad thing is that **all** default formulae come from this repository, and we
 
 ### Get the Last Versions from Homebrew
 
-Each formula is `*.rb` file in the `Formula` directory of the Git repository, and each commit contains information about a tool and version.
+Each formula is `*.rb` file in the `Formula` directory of the Git repository and each commit contains information about a tool and version.
 
 Hence, we only need to find the respective commit for what we want to install.
 For that, we can use either Homebrew itself or Git commands.
@@ -55,7 +55,7 @@ Otherwise, we have to use Git to access the full history.
 #### Using Git
 
 In order to be able to have a look at the full history from the command line, we have to clone the repository,
-even though we only need to retreive the commit history, i.e.:
+even though we only need to retrieve the commit history, i.e.:
 
 - We don't need any actual files.
 - We don't need an actual checkout.
@@ -103,7 +103,7 @@ $ git diff-tree --no-commit-id --name-only -r b1e187384b
 Formula/hugo.rb
 ```
 
-Usually, this result should not be a big surprise since all formulae are located in the `Formula` directory, and the information about a formula also cover this:
+Usually, this result should not be a big surprise since all formulae are located in the `Formula` directory and the information about a formula also cover this:
 
 ```sh
 $ brew info hugo
@@ -122,7 +122,7 @@ regardless of how old it actually is:
 $ brew installl https://raw.githubusercontent.com/Homebrew/homebrew-core/824a875022/Formula/hugo.rb
 ```
 
-Bringing the it all together with `${FORMULA}` and `${VERSION}` representing what we want to install,
+Bringing it all together with `${FORMULA}` and `${VERSION}` representing what we want to install,
 we can use the following snippet to install a formula based on the Git commit history:
 
 ```sh
@@ -167,7 +167,7 @@ zsh: command not found: hugo
 
 ### Install new Version
 
-To install the latest version, first get the latest formulae and then install it using the following command:
+To install the latest version, first, get the latest formulae and then install it using the following command:
 
 ```sh
 $ brew update
