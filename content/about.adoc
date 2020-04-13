@@ -6,7 +6,7 @@ draft: false
 
 == Personal
 
-- Photo enthusiast
+- Photo Enthusiast
 - Cyclist
 - Scandinavia Traveller
 - Hockey Fan
