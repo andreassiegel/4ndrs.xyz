@@ -50,29 +50,33 @@ params:
       icon: fab fa-stack-overflow
       weight: 2
       url: 'https://stackoverflow.com/users/6418426/andreas-siegel'
+    - name: dev.to
+      icon: fab fa-dev
+      weight: 3
+      url: 'https://dev.to/andreassiegel'
     - name: Instagram
       icon: fab fa-instagram
-      weight: 3
+      weight: 4
       url: 'https://www.instagram.com/andreassiegel'
     - name: 500px
       icon: fab fa-500px
-      weight: 4
+      weight: 5
       url: 'https://500px.com/andreassiegel'
     - name: Facebook
       icon: fab fa-facebook
-      weight: 5
+      weight: 6
       url: 'https://www.facebook.com/andreas.siegel.dresden'
     - name: Twitter
       icon: fab fa-twitter
-      weight: 6
+      weight: 7
       url: 'https://twitter.com/andreassiegel/'
     - name: LinkedIn
       icon: fab fa-linkedin
-      weight: 7
+      weight: 8
       url: 'https://www.linkedin.com/pub/andreas-siegel/99/1a2/4a6'
     - name: Xing
       icon: fab fa-xing
-      weight: 8
+      weight: 9
       url: 'https://xing.to/andreassiegel'
     - name: RSS
       icon: fas fa-rss
