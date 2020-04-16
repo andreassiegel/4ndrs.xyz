@@ -3,7 +3,7 @@ title: "Multiple Tool Versions via Homebrew"
 date: 2020-04-12T19:41:08+02:00
 draft: false
 categories:
-- Tools
+- Tips & Tricks
 tags:
 - hugo
 - homebrew
