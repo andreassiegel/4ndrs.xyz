@@ -26,6 +26,8 @@ a {
 
 p {
   margin: 2.0rem 0 2.0rem 0; }
+  p code {
+    white-space: nowrap; }
 
 h1,
 h2,
