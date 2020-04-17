@@ -113,7 +113,7 @@ Ran all test suites.
 ## Set up the Project in IntelliJ
 
 I love the command line but, as I already said, I also like my IntelliJ IDE.
-During development, I would like to be able to run tests often, selectively, and as easy as possible.
+During development, I would like to be able to run tests often, selectively, and as easily as possible.
 
 Therefore, I want to use my favorite tool to work with our little project.
 If we did not create the project in IntelliJ already, we have to import the project there.
@@ -130,7 +130,7 @@ That should work and you can proceed clicking _Next_ until there is no option to
 
 **Lesson learned: If you import JavaScript projects in IntelliJ, always select the project folder!**
 
-## Use IntelliJ to run the Tests
+## Use IntelliJ to Run the Tests
 
 Now that we were able to import the project successfully, it's time to run the tests again.
 
@@ -148,8 +148,7 @@ Marking the `__tests__` folder as "test sources root" also doesn't change anythi
 
 ### Create a Run Configuration for Jest
 
-So we have to head to the top-right corner to edit the run configurations,
-and add a new Jest run configuration.
+So we have to head to the top-right corner to edit the run configurations and add a new Jest run configuration.
 
 For that, we will have to enter the path to the Jest installation.
 This had been displayed after installing Jest:
@@ -200,7 +199,7 @@ The _All Tests_ configuration enables us to run all tests in our application in 
 
 ## Selectively run Tests
 
-Different to the command line, we're not restricted to running all tests all the time, though.
+Different from the command line, we're not restricted to running all tests all the time, though.
 We also have the debug mode right at hand and can specifically decide what to run or debug right next to the source code:
 
 {{< figure src="/images/posts/js-test-intellij/selective-tests.png" alt="Select what to run" caption="Selective test execution under full control" >}}
