@@ -209,7 +209,7 @@ With that, we have all the magic I was used to in my Java projects available in 
 
 ## Bonus: Live Testing
 
-During development, we usually want to run our tests reasonably often to notice as soon as possible when changes break something.
+During development, we usually want to run our tests reasonably often to notice when changes break something as soon as possible.
 
 Jest got us covered: It provides `--watch` or `--watchAll` flags that allow us to rerun the tests whenever something changes in the source code.
 We will not be able to use `--watch` if the project is not a Git project but `--watchAll` will do the trick in that case.
@@ -218,3 +218,16 @@ We will not be able to use `--watch` if the project is not a Git project but `--
 
 Isn't that awesome?! It's also something I did not know from my work in Java projects.
 On the other hand, that's just because I didn't know about the [Infinitest](https://infinitest.github.io/) plugin so far.
+
+## Summary
+
+In this article, we've seen how to
+
+- initialize a new Node.js project
+- install and configure Jest to run tests
+- import the project in IntelliJ IDEA
+- add a run configuration for Jest tests
+- selectively run or debug tests in IntelliJ
+- watch source code for changes and rerun the tests
+
+**Happy testing!**
