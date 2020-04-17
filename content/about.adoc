@@ -4,15 +4,26 @@ date: 2020-04-12T19:14:37+02:00
 draft: false
 ---
 
-== Personal
+== This Blog
 
-- Photo Enthusiast
-- Cyclist
-- Scandinavia Traveller
-- Hockey Fan
-- Book Lover
+Miscellaneous stuff I came across, spent some time on to figure it out, and might want to remember.
+It's a collection of notes that might be helpful for one or the other as well.
 
-== Professional
+Don't we all have the same problems and trouble from time to time?
 
-- IT Architect/Developer
-- Scrum Master
+== Me
+
+=== Personal
+
+Photo Enthusiast.
+Cyclist.
+Scandinavia Traveller.
+Hockey Fan.
+Book Lover.
+Dresden.
+
+=== Professional
+
+IT Architect/Developer.
+Scrum Master.
+Chemnitz.
