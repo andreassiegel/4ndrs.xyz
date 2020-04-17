@@ -10,3 +10,7 @@ $RECYCLE.BIN/
 
 # OSX
 .DS_Store
+
+# IntelliJ
+/*.iml
+.idea/
