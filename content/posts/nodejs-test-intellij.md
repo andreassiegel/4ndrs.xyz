@@ -184,8 +184,17 @@ There is not much we have to configure here, just:
 - make sure the project directory is set as working directory (default)
 - select _All tests_ (default)
 
-By the way, we could also add `jest` to the `devDependencies` in `package.json` and configure the `node_modules` directory from the project as the package location.
-On the other hand, Jest is so useful that I would always install it globally unless there is a very good reason not to do that.
+Regardless of the fact that we installed Jest globally to be able to use it from the command line,
+we should also add it to the `devDependencies` in `package.json`:
+
+```shell script
+$ npm install --save-dev jest
+```
+
+Otherwise, we will not be able to use the run icons in the gutter next to the source code to run our tests.
+This also means that we could configure the `node_modules` directory from the project as the Jest package location for the run configuration.
+
+**Lesson learned: Defining a package location in a run configuration alone does not mean that we can use all nice features of our IDE with that.**
 
 That's it! We are all set to run all tests within our project within IntelliJ using the new run configuration.
 Simply press `Ctrl+R` (or `Ctr+D` for debug mode) to run the tests.
