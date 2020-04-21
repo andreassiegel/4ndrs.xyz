@@ -119,7 +119,7 @@ Now, we can use the retrieved information to install that the formula at a speci
 regardless of how old it actually is:
 
 ```sh
-$ brew installl https://raw.githubusercontent.com/Homebrew/homebrew-core/824a875022/Formula/hugo.rb
+$ brew install https://raw.githubusercontent.com/Homebrew/homebrew-core/824a875022/Formula/hugo.rb
 ```
 
 Bringing it all together with `${FORMULA}` and `${VERSION}` representing what we want to install,
