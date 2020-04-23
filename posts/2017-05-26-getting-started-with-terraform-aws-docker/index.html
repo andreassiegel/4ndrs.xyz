@@ -1,0 +1,338 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=author content="Andreas Siegel"><meta name=description content="some guy passionate about IT and other things"><meta name=keywords content="blog,developer,personal"><meta name=twitter:card content="summary"><meta name=twitter:title content="Getting started with Terraform, AWS & Docker"><meta name=twitter:description content="This article is an introduction to Terraform and how to use it to set up a basic infrastructure on Amazon Web Services (AWS) to run a simple web service Docker container.
+ Terraform is an infrastructure-as-code (IAC) tool, that allows for efficiently setting up infrastructure by defining the desired state, which makes it different than many other tools. For more on why you should be using Terraform, check out Gruntwork&#8217;s blog post Why we use Terraform and not Chef, Puppet, Ansible, SaltStack, or CloudFormation."><meta property="og:title" content="Getting started with Terraform, AWS & Docker"><meta property="og:description" content="This article is an introduction to Terraform and how to use it to set up a basic infrastructure on Amazon Web Services (AWS) to run a simple web service Docker container.
+ Terraform is an infrastructure-as-code (IAC) tool, that allows for efficiently setting up infrastructure by defining the desired state, which makes it different than many other tools. For more on why you should be using Terraform, check out Gruntwork&#8217;s blog post Why we use Terraform and not Chef, Puppet, Ansible, SaltStack, or CloudFormation."><meta property="og:type" content="article"><meta property="og:url" content="https://4ndrs.xyz/posts/2017-05-26-getting-started-with-terraform-aws-docker/"><meta property="article:published_time" content="2017-05-27T00:00:00+02:00"><meta property="article:modified_time" content="2017-05-27T00:00:00+02:00"><base href=https://4ndrs.xyz/posts/2017-05-26-getting-started-with-terraform-aws-docker/><title>Getting started with Terraform, AWS & Docker · 4ndrs.xyz</title><link rel=canonical href=https://4ndrs.xyz/posts/2017-05-26-getting-started-with-terraform-aws-docker/><link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather:300,700%7CSource+Code+Pro:400,700&display=swap" rel=stylesheet><link rel=stylesheet href=https://use.fontawesome.com/releases/v5.11.2/css/all.css integrity=sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN crossorigin=anonymous><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin=anonymous><link rel=stylesheet href=https://4ndrs.xyz/css/coder.min.fca511761da66522bd050ea5416ffeb1e17c68fdb132cc218759f401bd2d5d60.css integrity="sha256-/KURdh2mZSK9BQ6lQW/+seF8aP2xMswhh1n0Ab0tXWA=" crossorigin=anonymous media=screen><link rel=icon type=image/png href=https://4ndrs.xyz/images/favicon-32x32.png sizes=32x32><link rel=icon type=image/png href=https://4ndrs.xyz/images/favicon-16x16.png sizes=16x16><meta name=generator content="Hugo 0.69.0"></head><body class=colorscheme-light><main class=wrapper><nav class=navigation><section class=container><a class=navigation-title href=https://4ndrs.xyz/>4ndrs.xyz</a>
+<input type=checkbox id=menu-toggle>
+<label class="menu-button float-right" for=menu-toggle><i class="fas fa-bars"></i></label><ul class=navigation-list><li class=navigation-item><a class=navigation-link href=https://4ndrs.xyz/about/>About</a></li><li class=navigation-item><a class=navigation-link href=https://4ndrs.xyz/posts/>Blog</a></li><li class=navigation-item><a class=navigation-link href=https://4ndrs.xyz/categories/>Categories</a></li><li class=navigation-item><a class=navigation-link href=https://4ndrs.xyz/contact/>Contact me</a></li></ul></section></nav><div class=content><section class="container post"><article><header><div class=post-title><h1 class=title>Getting started with Terraform, AWS & Docker</h1></div><div class=post-meta><div class=date><span class=posted-on><i class="fas fa-calendar"></i><time datetime=2017-05-27T00:00:00+02:00>May 27, 2017</time></span>
+<span class=reading-time><i class="fas fa-clock"></i>13-minute read</span></div><div class=categories><i class="fas fa-folder"></i><a href=https://4ndrs.xyz/categories/devops/>DevOps</a></div><div class=tags><i class="fas fa-tag"></i><a href=https://4ndrs.xyz/tags/docker/>docker</a>
+<span class=separator>•</span>
+<a href=https://4ndrs.xyz/tags/aws/>aws</a>
+<span class=separator>•</span>
+<a href=https://4ndrs.xyz/tags/terraform/>terraform</a>
+<span class=separator>•</span>
+<a href=https://4ndrs.xyz/tags/infrastructure-as-code/>infrastructure-as-code</a>
+<span class=separator>•</span>
+<a href=https://4ndrs.xyz/tags/iac/>iac</a></div></div></header><div><div id=preamble><div class=sectionbody><div class=paragraph><p>This article is an introduction to <a href=https://www.terraform.io/>Terraform</a> and how to use it to set up a basic infrastructure on <a href=https://aws.amazon.com>Amazon Web Services (AWS)</a> to run a simple web service <a href=https://www.docker.com/>Docker</a> container.</p></div><div class=paragraph><p>Terraform is an <em>infrastructure-as-code (IAC)</em> tool, that allows for efficiently setting up infrastructure by defining the desired state, which makes it different than many other tools.
+For more on why you should be using Terraform, check out Gruntwork&#8217;s blog post <a href=https://blog.gruntwork.io/why-we-use-terraform-and-not-chef-puppet-ansible-saltstack-or-cloudformation-7989dad2865c>Why we use Terraform and not Chef, Puppet, Ansible, SaltStack, or CloudFormation</a>.</p></div><div class=paragraph><p>This article is not supposed to provide a general overview about any of the used tools. The official web pages and the documentation you can find there are much better sources.
+Instead, this post is intended to be a walk through a sample Terraform configuration that sets up an entire environment in AWS, from VPC to public and private DNS records for a simple web service.</p></div></div></div><div class=sect1><h2 id=_prerequisites>Prerequisites</h2><div class=sectionbody><div class=paragraph><p>First of all, you need to install Terraform, of course, but you will also need AWS API credentials.
+Moreover, you have to install <a href=https://docs.docker.com/machine/overview/>Docker Machine</a>, because we are going to use the Terraform Docker provider to remotely manage containers.</p></div><div class=sect2><h3 id=_terraform_installation>Terraform Installation</h3><div class=paragraph><p>If you are on a Mac and you are using <a href=https://brew.sh/>Homebrew</a>, installing Terraform is as easy as running the following command:</p></div><div class=listingblock><div class=content><pre class=highlight><code class=language-bash data-lang=bash>$ brew install terraform</code></pre></div></div><div class=paragraph><p>Other installation options can be found on the <a href=https://www.terraform.io/downloads.html>Terraform download page</a>.</p></div></div><div class=sect2><h3 id=_aws_account_configuration>AWS Account Configuration</h3><div class=paragraph><p>Before you can set up the infrastructure, you need to <a href="https://portal.aws.amazon.com/gp/aws/developer/registration/index.html?nc2=h_ct">register for a free AWS account</a>. Everything used in this tutorial is available in the free tier, that is available for 12 months. <em>Well, the public DNS record may not be available without a registered domain, but we will get to that.</em></p></div><div class=paragraph><p>When you have created your account, you need to get API key credentials that allow for working with the AWS command-line client, their API&#8201;&#8212;&#8201;or the Terraform AWS provider, see <a href=https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys>Understanding and Getting Your Security Credentials</a>.</p></div><div class=paragraph><p>There are many ways to configure the credentials that shall be used by Terraform:</p></div><div class=paragraph><p>First of all, you can explicitly set them as static credentials in the configuration:</p></div><div class=listingblock><div class=content><pre class=highlight><code class=language-hcl data-lang=hcl>provider "aws" {
+  access_key = "${var.aws_access_key}"
+  secret_key = "${var.aws_secret_key}"
+  region     = "eu-west-1"
+}</code></pre></div></div><div class=paragraph><p>Or you refer to a credentials file:</p></div><div class=listingblock><div class=content><pre class=highlight><code class=language-hcl data-lang=hcl>provider "aws" {
+  region                  = "eu-west-1"
+  shared_credentials_file = "~/.aws/credentials"
+  profile                 = "default"
+}</code></pre></div></div><div class=paragraph><p>The credentials file should look like this:</p></div><div class=listingblock><div class=content><pre class=highlight><code>[default]
+aws_access_key_id = ...
+aws_secret_access_key = ...</code></pre></div></div><div class=paragraph><p>While the above options would work, the most convenient way to set the credentials probabl is to simply set them as environment variables.
+If nothing is explicitly set in the configuration, Terraform will fall back to these variables:</p></div><div class=listingblock><div class=content><pre class=highlight><code class=language-bash data-lang=bash>export AWS_ACCESS_KEY_ID='...'
+export AWS_SECRET_ACCESS_KEY='...'
+export AWS_PROFILE=default</code></pre></div></div><div class=paragraph><p>And, if you decide not to set your credentials upfront at all, you will be asked to enter them on every Terraform run.</p></div></div><div class=sect2><h3 id=_docker_machine_installation>Docker (Machine) Installation</h3><div class=paragraph><p>While you could, theoretically, install <code>docker-machine</code> also using Homebrew, I would recommend to install the complete <a href=https://www.docker.com/docker-mac>Docker for Mac</a>, which is available via <a href=https://caskroom.github.io/>Homebrew Cask</a>:</p></div><div class=listingblock><div class=content><pre class=highlight><code class=language-bash data-lang=bash>$ brew cask install docker</code></pre></div></div><div class=paragraph><p>For other options see <a href=https://docs.docker.com/machine/install-machine/>Install Docker Machine</a>.</p></div></div></div></div><div class=sect1><h2 id=_terraform_root_configuration>Terraform Root Configuration</h2><div class=sectionbody><div class=paragraph><p>Each directory that contains Terraform (<code>*.tf</code>) files is considered a Terraform configuration.
+The root configuration we will work with consists of just two files:</p></div><div class=ulist><ul><li><p><code>main.tf</code>&#8201;&#8212;&#8201;the actual configuration</p></li><li><p><code>variables.tf</code>&#8201;&#8212;&#8201;variables that are used in the configuration</p></li></ul></div><div class=paragraph><p>Other than that, there are just two modules in the sub-directories <code>aws</code> and <code>docker</code>.</p></div><div class=sect2><h3 id=_variables>Variables</h3><div class=paragraph><p>Variables allow for storing properties that may change from setup to setup in a common place. They are generally used to define placeholders that are required to configure the desired infrastructure:</p></div><div class=paragraph><p>Our root variables file looks like this:</p></div><div class=listingblock><div class=title><code>variables.tf</code></div><div class=content><pre class=highlight><code class=language-hcl data-lang=hcl>variable "aws_region" {
+  description = "AWS region to launch servers"
+  default     = "eu-west-1"
+}
+
+variable "aws_public_zone_id" {
+  description = "AWS public zone ID"
+}</code></pre></div></div><div class=paragraph><p>We specify the AWS region we want to use for our infrastructure, and also define a variable the the public zone ID, that will be used for the public DNS record.
+Note that this variable does not have a default value. Thus, you will be requested to enter the value once you apply the Terraform configuration.</p></div></div><div class=sect2><h3 id=_main_configuration>Main Configuration</h3><div class=listingblock><div class=title><code>main.tf</code></div><div class=content><pre class=highlight><code class=language-hcl data-lang=hcl>provider "aws" {
+  region = "${var.aws_region}"
+}
+
+module "aws" {
+  source = "./aws"
+
+  aws_region = "${var.aws_region}"
+
+  sub_domain_name       = "app"
+  dns_private_zone_name = "andreassiegel.internal"
+  dns_public_zone_id    = "${var.aws_public_zone_id}"
+
+  private_key_path = "~/.ssh/aws_deployer_rsa"
+  public_key_path  = "~/.ssh/aws_deployer_rsa.pub"
+
+  docker_machine_name = "app"
+}
+
+module "docker" {
+  source = "./docker"
+
+  docker_host         = "${module.aws.ip}"
+  docker_machine_name = "${module.aws.docker_host_name}"
+
+  container_image = "andreassiegel/hello-echo:latest"
+  container_name  = "echo"
+}</code></pre></div></div><div class=paragraph><p>The main file configures the AWS provider using the region variable. The credentials that would also be set there are read from the environment variables.</p></div><div class=paragraph><p>Everything else is left to the modules.</p></div><div class=paragraph><p>The <code>source</code> field defines where the module configuration can be found. In our case, that&#8217;s just a sub-directory, but it could also be some remote location.
+The remaining properties are actually module variables that correspond to the modules' <code>variables.tf</code> files.</p></div></div></div></div><div class=sect1><h2 id=_modules>Modules</h2><div class=sectionbody><div class=paragraph><p>The <code>aws</code> module is responsible for setting up the entire infrastructure in the defined AWS region including creation of the local Docker machine to interact with the remote Docker host.</p></div><div class=paragraph><p>The <code>docker</code> module then defines which container should be run on the remote host. For that the output of the <code>aws</code> module is used to set the host and machine name: <code>module.aws.ip</code> refers to the module&#8217;s output variable <code>ip</code>, for instance.</p></div><div class=sect2><h3 id=_aws_module>AWS Module</h3><div class=paragraph><p>A working infrastructure in AWS requires several different pieces or resources, as they are called by Terraform.
+They are defined in different files for better maintainability:</p></div><div class=ulist><ul><li><p><code>network.tf</code> configures the overall network</p></li><li><p><code>routing-and-network.tf</code> basically configures access to the internet</p></li><li><p><code>subnets.tf</code> defines the subnets in the network</p></li><li><p><code>security-groups.tf</code> creates the security groups for access restriction in the network</p></li><li><p><code>ec2-machines.tf</code> defines the actual server</p></li><li><p><code>dns-and-dhcp.tf</code> configures DNS records</p></li><li><p><code>output.tf</code> defines the module&#8217;s output variables</p></li></ul></div><div class=paragraph><p>You will see that it is easy to refer to resources by their type and an identifier.</p></div><div class=sect3><h4 id=_network>Network</h4><div class=paragraph><p>First of all, we need to set up a virtual private cloud (VPC), the network for all our resources:</p></div><div class=listingblock><div class=title><code>aws/network.tf</code></div><div class=content><pre class=highlight><code class=language-hcl data-lang=hcl>resource "aws_vpc" "main" {
+  cidr_block           = "${var.vpc_cidr}"
+  enable_dns_support   = "true"
+  enable_dns_hostnames = "true"
+
+  tags {
+    Name = "Terraform VPC"
+  }
+}</code></pre></div></div><div class=paragraph><p>Except the internal IP address range used in that network, only basic DNS settings are configured here.</p></div><div class=paragraph><p>The identifier of this <code>aws_vpc</code> resource is <code>main</code>, and we are going to refer to its ID several times using the expression <code>${aws_vpc.main.id}</code>. That works exactly like variables, and creates an implicit dependency between resources.</p></div></div><div class=sect3><h4 id=_routing_and_network>Routing and Network</h4><div class=paragraph><p>The routing and network configuration defines an access control list for the network, but doesn&#8217;t add any restrictions. Those will be based on security groups.</p></div><div class=paragraph><p>Apart from that, the configuration specifies an internet gateway as well as a correspondig routing table.</p></div><div class=listingblock><div class=title><code>aws/routing-and-network.tf</code></div><div class=content><pre class=highlight><code class=language-hcl data-lang=hcl>resource "aws_internet_gateway" "gateway" {
+  vpc_id = "${aws_vpc.main.id}"
+
+  tags {
+    Name = "Internet gateway generated by Terraform"
+  }
+}
+
+resource "aws_network_acl" "all" {
+  vpc_id = "${aws_vpc.main.id}"
+
+  egress {
+    protocol   = "-1"
+    rule_no    = 2
+    action     = "allow"
+    cidr_block = "0.0.0.0/0"
+    from_port  = 0
+    to_port    = 0
+  }
+
+  ingress {
+    protocol   = "-1"
+    rule_no    = 1
+    action     = "allow"
+    cidr_block = "0.0.0.0/0"
+    from_port  = 0
+    to_port    = 0
+  }
+
+  tags {
+    Name = "Open ACL"
+  }
+}
+
+resource "aws_route_table" "public" {
+  vpc_id = "${aws_vpc.main.id}"
+
+  tags {
+    Name = "Public"
+  }
+
+  route {
+    cidr_block = "0.0.0.0/0"
+    gateway_id = "${aws_internet_gateway.gateway.id}"
+  }
+}</code></pre></div></div></div><div class=sect3><h4 id=_subnets>Subnets</h4><div class=paragraph><p>The next part is setting up a public subnet within our VPC for the instance we are going to create later on.
+Since it will need internet access, we also create a routing table association between the subnet and the <code>public</code> routing table created in the previous file.</p></div><div class=listingblock><div class=title><code>aws/subnets.tf</code></div><div class=content><pre class=highlight><code class=language-hcl data-lang=hcl>resource "aws_subnet" "public" {
+  vpc_id                  = "${aws_vpc.main.id}"
+  cidr_block              = "${var.subnet_public_cidr}"
+  map_public_ip_on_launch = "true"
+
+  tags {
+    Name = "Public subnet"
+  }
+}
+
+resource "aws_route_table_association" "public" {
+  subnet_id      = "${aws_subnet.public.id}"
+  route_table_id = "${aws_route_table.public.id}"
+}</code></pre></div></div></div><div class=sect3><h4 id=_security_groups>Security Groups</h4><div class=paragraph><p>As mentioned, access or security restrictions for the instance are established using security groups in the VPC network.
+We create four of them to</p></div><div class=ulist><ul><li><p>allow incoming SSH connections (port 22)</p></li><li><p>grant access to port 2376 used by Docker Machine</p></li><li><p>provide access to the service running on the instance on port 80</p></li><li><p>enable outgoing internet access without restrictions</p></li></ul></div><div class=listingblock><div class=title><code>aws/security-groups.tf</code></div><div class=content><pre class=highlight><code class=language-hcl data-lang=hcl>resource "aws_security_group" "allow_all_ssh" {
+  name        = "allow_all_ssh"
+  description = "Allow inbound SSH traffic"
+  vpc_id      = "${aws_vpc.main.id}"
+
+  ingress {
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  tags {
+    Name = "Allow SSH"
+  }
+}
+
+resource "aws_security_group" "allow_all_docker" {
+  name        = "allow_all_docker"
+  description = "Allow inbound Docker traffic"
+  vpc_id      = "${aws_vpc.main.id}"
+
+  ingress {
+    from_port   = 2376
+    to_port     = 2376
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  tags {
+    Name = "Allow Docker"
+  }
+}
+
+resource "aws_security_group" "web_server" {
+  name        = "web_server"
+  description = "Allow HTTP and HTTPS traffic in, browser access out"
+  vpc_id      = "${aws_vpc.main.id}"
+
+  ingress {
+    from_port   = 80
+    to_port     = 80
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  tags {
+    Name = "Web Server"
+  }
+}
+
+resource "aws_security_group" "internet_access" {
+  name        = "internet_access"
+  description = "Allow outgoing internet access"
+  vpc_id      = "${aws_vpc.main.id}"
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  tags {
+    Name = "Internet Access"
+  }
+}</code></pre></div></div><div class=paragraph><p>We could have added all these rules to a single security group, but I prefer to keep things separate so that they can be assigned on a case-by-case basis, even though internet access and open ports for SSH or Docker Machine may be quite standard.</p></div></div><div class=sect3><h4 id=_ec2_machines>EC2 Machines</h4><div class=paragraph><p>The next step is almost the final one: The EC2 instance is created. I have chosen Amazon&#8217;s free-tier-eligible Ubuntu image in the region <code>eu-west-1</code>, that is looked up in this configuration using <code>${lookup(var.ami, var.aws_region)}</code>. That refers to a map variable in <code>aws/variables.tf</code>:</p></div><div class=listingblock><div class=title><code>aws/variables.tf</code></div><div class=content><pre class=highlight><code class=language-hcl data-lang=hcl>variable "ami" {
+  type = "map"
+
+  default = {
+    eu-west-1 = "ami-a8d2d7ce"
+  }
+}</code></pre></div></div><div class=paragraph><p>If you add more entries to the region/AMI ID map, you can use the same configuration to start the instance in other regions, too.</p></div><div class=paragraph><p>When configuring the EC2 instance, we also set the SSH key pair that will be used for SSH connections to the new server.
+Note that Terraform does not create key pairs, and you therefore have to use an existing key pair. Or you generate keys in the AWS console.</p></div><div class=paragraph><p>The EC2 instance will be created in our public subnet and uses all four security groups.</p></div><div class=paragraph><p>Once the instance is up, we use the <code>remote-exec</code> provisioner to connect to the instance using the SSH agent. We remotely execute commands to install <code>docker-engine</code>, and allow for Docker command execution as the standard user without root privileges.</p></div><div class=paragraph><p>We also run a local command to create a new Docker machine for the new remote Docker host.
+In that command, we use <code>${self.public_ip}</code> to refer to public IP address of the just created instance (note that both <code>remote-exec</code> and <code>local-exec</code> provisioners are nested in the <code>aws_instance</code> resource).</p></div><div class=listingblock><div class=title><code>aws/ec2-machines.tf</code></div><div class=content><pre class=highlight><code class=language-hcl data-lang=hcl>resource "aws_key_pair" "deployer" {
+  key_name   = "deployer-key"
+  public_key = "${file("${var.public_key_path}")}"
+}
+
+resource "aws_instance" "app" {
+  ami                         = "${lookup(var.ami, var.aws_region)}"
+  instance_type               = "t2.micro"
+  associate_public_ip_address = true
+  key_name                    = "${aws_key_pair.deployer.key_name}"
+  subnet_id                   = "${aws_subnet.public.id}"
+  disable_api_termination     = "false"
+
+  vpc_security_group_ids = [
+    "${aws_security_group.web_server.id}",
+    "${aws_security_group.allow_all_ssh.id}",
+    "${aws_security_group.allow_all_docker.id}",
+    "${aws_security_group.internet_access.id}",
+  ]
+
+  provisioner "remote-exec" {
+    inline = [
+      "sudo apt-get update",
+      "sudo apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D",
+      "sudo apt-add-repository 'deb https://apt.dockerproject.org/repo ubuntu-xenial main'",
+      "sudo apt-get update",
+      "apt-cache policy docker-engine",
+      "sudo apt-get install -y docker-engine",
+      "sudo usermod -aG docker $(whoami)",
+    ]
+
+    connection {
+      type        = "ssh"
+      user        = "ubuntu"
+      host        = "${self.public_ip}"
+      private_key = "${file("${var.private_key_path}")}"
+      timeout     = "5m"
+      agent       = "true"
+    }
+  }
+
+  provisioner "local-exec" {
+    command = "docker-machine create --driver generic --generic-ip-address=${self.public_ip} --generic-ssh-key ${var.private_key_path} --generic-ssh-user=ubuntu ${var.docker_machine_name}"
+  }
+
+  depends_on = [
+    "aws_internet_gateway.gateway",
+  ]
+}</code></pre></div></div></div><div class=sect3><h4 id=_dns_and_dhcp>DNS and DHCP</h4><div class=paragraph><p>Last, but not least, we configure a private DNS zone, and assign both a public and a private DNS name to the new instance:</p></div><div class=paragraph><p>The instance will be available as <code>app.andreassiegel.internal</code> from within the VPC, while it is also available as <code>app.andreassiegel.cc</code> to the outside world.</p></div><div class=listingblock><div class=title><code>aws/dns-and-dhcp.tf</code></div><div class=content><pre class=highlight><code class=language-hcl data-lang=hcl>resource "aws_vpc_dhcp_options" "internal" {
+  domain_name = "${var.dns_private_zone_name}"
+
+  domain_name_servers = [
+    "AmazonProvidedDNS",
+  ]
+
+  tags {
+    Name = "internal private DNS name"
+  }
+}
+
+resource "aws_vpc_dhcp_options_association" "dns_resolver" {
+  vpc_id          = "${aws_vpc.main.id}"
+  dhcp_options_id = "${aws_vpc_dhcp_options.internal.id}"
+}
+
+resource "aws_route53_zone" "main" {
+  name    = "${var.dns_private_zone_name}"
+  vpc_id  = "${aws_vpc.main.id}"
+  comment = "managed by Terraform"
+}
+
+resource "aws_route53_record" "app-private" {
+  zone_id = "${aws_route53_zone.main.zone_id}"
+  name    = "${var.sub_domain_name}.${var.dns_private_zone_name}"
+  type    = "A"
+  ttl     = "300"
+
+  records = [
+    "${aws_instance.app.private_ip}",
+  ]
+}
+
+resource "aws_route53_record" "app-public" {
+  zone_id = "${var.dns_public_zone_id}"
+  name    = "${var.sub_domain_name}"
+  type    = "A"
+  ttl     = "300"
+
+  records = [
+    "${aws_instance.app.public_ip}",
+  ]
+}</code></pre></div></div></div><div class=sect3><h4 id=_output>Output</h4><div class=paragraph><p>At this point, the full infrastructure is configured and once the configuration is applied, the server would be created, but there would not be running anything.</p></div><div class=paragraph><p>For this reason, we have an additional output configuration that defines some output variables that then can be used as input for another module, for example:</p></div><div class=listingblock><div class=title><code>aws/output.tf</code></div><div class=content><pre class=highlight><code class=language-hcl data-lang=hcl>output "ip" {
+  value = "${aws_instance.app.public_ip}"
+}
+
+output "docker_host_name" {
+  value = "${var.docker_machine_name}"
+}</code></pre></div></div><div class=paragraph><p>In this case, we provide the public IP address of the new EC2 instance, and the assigned name of the Docker machine as variables, so that we can use them in the <code>docker</code> module to deploy a containerized service to our instance.</p></div></div></div><div class=sect2><h3 id=_docker_module>Docker Module</h3><div class=paragraph><p>The Docker module is very simple, especially compared to the previous module: It specifies the Docker host, in this case the Docker machine for the newly created remote host, pulls an image from the public Docker registry, and runs a container of that image with port-forwarding to the Docker host:</p></div><div class=listingblock><div class=title><code>docker/main.tf</code></div><div class=content><pre class=highlight><code class=language-hcl data-lang=hcl>provider "docker" {
+  host      = "tcp://${var.docker_host}:2376"
+  cert_path = "${var.docker_machine_root_path}/${var.docker_machine_name}"
+}
+
+resource "docker_image" "image" {
+  name = "${var.container_image}"
+}
+
+resource "docker_container" "container" {
+  image    = "${docker_image.image.latest}"
+  name     = "${var.container_name}"
+  hostname = "${var.container_name}"
+  restart  = "on-failure"
+  must_run = "true"
+
+  ports {
+    internal = "${var.internal_port}"
+    external = "${var.external_port}"
+  }
+}</code></pre></div></div></div></div></div><div class=sect1><h2 id=_execute_the_configuration>Execute the Configuration</h2><div class=sectionbody><div class=paragraph><p>Before you can actually apply the configuration, you need to initialize Terraform:</p></div><div class=listingblock><div class=content><pre class=highlight><code class=language-bash data-lang=bash>$ terraform init</code></pre></div></div><div class=paragraph><p>This will create a <code>.terraform</code> directory that is going to contain all modules that are used in the configuration.</p></div><div class=listingblock><div class=content><pre class=highlight><code class=language-bash data-lang=bash>$ terraform get</code></pre></div></div><div class=paragraph><p>The next step populates the <code>.terraform/modules</code> directory: It "pulls" the modules that are used in the root configuration, in that case <code>aws</code> and <code>docker</code>, both our local modules.</p></div><div class=listingblock><div class=content><pre class=highlight><code class=language-bash data-lang=bash>$ terraform plan</code></pre></div></div><div class=paragraph><p>After you have fetched all required pieces, Terraform can determine the necessary steps to get to the desired state of the infrastructure.</p></div><div class=paragraph><p>The order in which the different resources are created is up to Terraform. It has to resolve the implicit and explicit dependencies in the execution plan. We just have to define how our desired infrastructure should look like.</p></div><div class=paragraph><p>The execution plan also considers the resources that already exist, and checks if they have to change and therefore need to be destroyed.
+Note that Terraform maintains immutable infrastructure: If something changes, it gets destroyed and recreated.</p></div><div class=listingblock><div class=content><pre class=highlight><code class=language-bash data-lang=bash>$ terraform apply</code></pre></div></div><div class=paragraph><p>This will actually run the execution and apply the configuration to set up the desired infrastructure.</p></div></div></div><div class=sect1><h2 id=_use_the_service>Use the Service</h2><div class=sectionbody><div class=paragraph><p>When this is done, it is possible to connect to the newly created server using SSH and the public IP. In my case, I can even use the public DNS name:</p></div><div class=listingblock><div class=content><pre class=highlight><code class=language-bash data-lang=bash>$ ssh -i "~/.ssh/aws_deployer_rsa" ubuntu@app.andreassiegel.cc</code></pre></div></div><div class=paragraph><p>Once connected to the server, let us check if the container is really running on that host:</p></div><div class=listingblock><div class=content><pre class=highlight><code class=language-bash data-lang=bash>ubuntu@app:~$ docker ps
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                  NAMES
+3e2206dabf67        77f7313eb62f        "./entrypoint.sh /..."   2 hours ago         Up 2 hours          0.0.0.0:80-&gt;8080/tcp   echo</code></pre></div></div><div class=paragraph><p>Now you can also use <code>curl</code> to talk to the running service, either using the internal DNS name, any of the assigned IP addresses you can find in the AWS EC2 console or <code>localhost:80</code>:</p></div><div class=listingblock><div class=content><pre class=highlight><code class=language-bash data-lang=bash>ubuntu@app:~$ curl -X POST http://app.andreassiegel.internal/hello/world \
+-H 'cache-control: no-cache' \
+-H 'content-type: application/json' \
+-d '{"message": "Hello World"}' \
+| json_pp</code></pre></div></div></div></div><div class=sect1><h2 id=_destroy_the_infrastructure>Destroy the Infrastructure</h2><div class=sectionbody><div class=paragraph><p>Once you are done, and you do not need the server anymore, you can destroy everything that was created by Terraform:</p></div><div class=listingblock><div class=content><pre class=highlight><code class=language-bash data-lang=bash>$ terraform destroy</code></pre></div></div><div class=paragraph><p>Now it is time to get started yourself. You can find the full configuration used here <a href=https://github.com/andreassiegel/terraform-aws-docker>on GitHub</a>.</p></div></div></div></div><footer><h2>See Also</h2><ul><li><a href=https://4ndrs.xyz/posts/nodejs-test-intellij/>JavaScript Testing with Jest in IntelliJ IDEA</a></li><li><a href=https://4ndrs.xyz/posts/multiple-tool-versions-via-homebrew/>Multiple Tool Versions via Homebrew</a></li><li><a href=https://4ndrs.xyz/contact/>Say Hello</a></li></ul><div id=disqus_thread></div><script type=application/javascript>var disqus_config=function(){};(function(){if(["localhost","127.0.0.1"].indexOf(window.location.hostname)!=-1){document.getElementById('disqus_thread').innerHTML='Disqus comments not available by default when the website is previewed locally.';return;}
+var d=document,s=d.createElement('script');s.async=true;s.src='//'+"4ndrs-xyz"+'.disqus.com/embed.js';s.setAttribute('data-timestamp',+new Date());(d.head||d.body).appendChild(s);})();</script><noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript><a href=https://disqus.com class=dsq-brlink>comments powered by <span class=logo-disqus>Disqus</span></a></footer></article></section></div><footer class=footer><section class=container>©
+2017 -
+2020
+Andreas Siegel</section></footer></main><script type=application/javascript>var doNotTrack=false;if(!doNotTrack){(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');ga('create','UA-431647-14','auto');ga('send','pageview');}</script></body></html>
