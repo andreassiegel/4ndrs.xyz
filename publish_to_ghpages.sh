@@ -1,6 +1,6 @@
 #!/bin/sh
 
-if [ "`git status -s`" ]
+if [ "`git status --untracked-files=no -s`" ]
 then
     echo "The working directory is dirty. Please commit any pending changes."
     exit 1;
