@@ -9,6 +9,7 @@ tags:
 - homebrew
 - git
 - cli
+- mac
 ---
 
 Recently, I started using [Hugo](https://gohugo.io/) with an older project.
