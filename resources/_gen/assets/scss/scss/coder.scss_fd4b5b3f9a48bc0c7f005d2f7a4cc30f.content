@@ -27,6 +27,7 @@ a {
 p {
   margin: 2.0rem 0 2.0rem 0; }
   p code {
+    font-weight: 400;
     white-space: nowrap; }
 
 h1,
@@ -46,6 +47,13 @@ h6 {
   h5 a,
   h6 a {
     color: #000; }
+  h1 code,
+  h2 code,
+  h3 code,
+  h4 code,
+  h5 code,
+  h6 code {
+    font-weight: 600; }
 
 h1 {
   font-size: 3.2rem;
@@ -113,8 +121,6 @@ pre {
 
 code {
   font-family: "Fira Code", "Lucida Console", monospace;
-  font-size: 1.6rem;
-  font-weight: 400;
   color: #212121; }
 
 blockquote {
@@ -125,13 +131,17 @@ blockquote {
   font-style: italic; }
 
 th, td {
-  padding: 1.6rem; }
+  padding: 1.6rem;
+  text-align: left; }
+
+th {
+  font-family: Lato, Helvetica, sans-serif; }
 
 table {
   border-collapse: collapse; }
 
 table td, table th {
-  border: 2px solid #000; }
+  border: 1px solid #E0E0E0; }
 
 table tr:first-child th {
   border-top: 0; }
@@ -268,6 +278,9 @@ figure {
 
 .list .more-link {
   font-family: Lato, Helvetica, sans-serif; }
+
+.gist table td {
+  border: 0; }
 
 .centered {
   display: flex;
