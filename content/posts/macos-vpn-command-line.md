@@ -12,7 +12,8 @@ tags:
 categories:
 - Tips & Tricks
 externalLink: ""
-series: []
+series:
+- Command Line VPN
 ---
 
 During Corona time, I have to connect to a VPN most of the time in order to work.
