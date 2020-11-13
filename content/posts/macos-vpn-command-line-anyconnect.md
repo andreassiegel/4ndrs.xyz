@@ -1,5 +1,5 @@
 --- 
-draft: true
+draft: false
 date: 2020-11-13T18:39:03+01:00
 title: "Use Cisco AnyConnect to Connect to a VPN from the Command Line on Mac OS"
 description: ""
