@@ -64,6 +64,11 @@ exit
 EOF
 ```
 
+**Important Note:**
+Be aware that, when used in a script, this will print your password in clear text to the terminal.
+I found no way around this, in some way the passwort, etc. was always printed.
+So it is really recommended to eventually hide the output from the command by passing it on to `/dev/null`, which is, for sure, less than ideal.
+
 In order to make this work with some name like `myVPN` as before,
 we either need to add some hardcoded stuff to our script, or we add a configuration file similar to the `~/.ssh/config` for instance.
 
