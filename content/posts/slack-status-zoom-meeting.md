@@ -14,7 +14,8 @@ tags:
 - status
 - automation
 - mac
-categories: []
+categories:
+- Tips & Tricks
 externalLink: ""
 series: []
 ---
