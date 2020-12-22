@@ -58,8 +58,8 @@ PRESET_TEXT_zoom=&#34;In a zoom meeting&#34;
 </code></pre></div><p>As you can see, it will use the emoji <code>:zoom:</code> for your status by default.
 However, you might not have such an icon in your workspace,
 so you might have to add a custom emoji with that name, e.g., <a href=https://www.stickpng.com/img/icons-logos-emojis/video-conference-software-providers/zoom-icon-logo>this one</a>.</p><p>Afterwards, you can test this by executing this command:</p><div class=highlight><pre style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>$ slack_status.sh <span style=color:#007020>test</span>
-</code></pre></div><p>If everything works, your status should show a check mark now.
-If also the Hammerspoon configuration is loaded sucessfully,
+</code></pre></div><p>If everything works, your status should show a checkmark now.
+If also the Hammerspoon configuration is loaded successfully,
 your Slack status will be set accordingly.</p><p>Nevertheless, note that the status might not get updated immediately when you join a Zoom meeting.
 By default, the script to detect Zoom meetings checks that every 20 seconds
 so that it might take a few seconds to update the status in Slack.</p><h2 id=webhook-based-alternative>Webhook-based Alternative</h2><p>Alternatively, you can use an alternative solution that might work on other systems than MacOS:</p><p>It uses also an app at Zoom&rsquo;s end to subscribe to events, and then use a Node.js application
