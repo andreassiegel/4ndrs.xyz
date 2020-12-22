@@ -130,8 +130,8 @@ Afterwards, you can test this by executing this command:
 $ slack_status.sh test
 ```
 
-If everything works, your status should show a check mark now.
-If also the Hammerspoon configuration is loaded sucessfully,
+If everything works, your status should show a checkmark now.
+If also the Hammerspoon configuration is loaded successfully,
 your Slack status will be set accordingly.
 
 Nevertheless, note that the status might not get updated immediately when you join a Zoom meeting.
