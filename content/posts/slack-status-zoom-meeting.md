@@ -63,7 +63,7 @@ $ brew install hammerspoon
 ```
 
 Afterwards, make sure to add it to the allowed tools for _Accessibility_ in the _Security & Privacy_ settings.
-Usually, Hammerspoon shoould ask you to grant permission when you first launch it.
+Usually, Hammerspoon should ask you to grant permission when you first launch it.
 Also, it will ask you to grant access to documents so that it can read Lua scripts.
 
 Now, let us find a way to make use of that to update the Slack status when we are in Zoom.
