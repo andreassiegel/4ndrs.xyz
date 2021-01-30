@@ -47,11 +47,11 @@ After the first stories have been gone, the fourth one points out that pitch and
 
 Oh boy! What’s gone wrong with people? Where has respect for the work of others gone? Why don’t even (some) people doing creative work respect the creative work others have created, even though in another field? How can someone be so brazen to even distort the original work just to not be detected?
 
-I mean, the entire digital (social media) world changed a lot over the last couple years, so did the creative bubble within them. In recent years, there were a lot of discussions about upload filters, and they will come now. Looking at the story above, I totally understand why.
+I mean, the entire digital (social media) world changed a lot over the last couple of years, so did the creative bubble within them. In recent years, there were a lot of discussions about upload filters, and they will come now. Looking at the story above, I totally understand why.
 
 I really thought we would know better by now. I really thought schools would educate kids and people about what can be used or under which circumstances (or what would be a copyright infringement). There have been many cases by now. File sharing tools can automatically report copyright infringements, people get prosecuted. And still…
 
-I used to be a content creator myself. You could still download and use some of my photography from a stock photo platform, even though I did not upload any new content for almost 5 years. There were times where the list of unauthorized and unlicensed usages of my work was longer than the list of downloads or voucher copies I received. Back in those days, I was quite happy the platform took care of that, and made people get proper licenses.
+I used to be a content creator myself. You could still download and use some of my photography from a stock photo platform, even though I did not upload any new content for almost 5 years. There were times where the list of unauthorized and unlicensed usages of my work was longer than the list of downloads or voucher copies I received. Back in those days, I was quite happy the platform took care of that and made people get proper licenses.
 
 Nowadays, there are many, many awesome and generous  people doing amazing creative work they offer for free, sometimes the creator only has to be credited (thus, make sure to check the license terms).
 
