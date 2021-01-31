@@ -17,7 +17,7 @@ externalLink: ""
 series: []
 ---
 
-## Prolog
+## Prologue
 
 A “content creator” created a (drone) video showing some nice landscape. Nothing bad or wrong so far. The video was uploaded to Instagram at first, I guess. That’s at least where I noticed the story that’s causing mixed feelings:
 
