@@ -27,7 +27,7 @@ In his/her Instagram story, the “creator” complained about the video being b
 
 ## Second Act
 
-In the subsequent story, the “creator” still seeming angry mentioned the account of some copyright-free music page pointing out that only electronic music will be used going forward, even though it won’t fit the nature video (for which some piano music was chosen stolen).
+In the subsequent story, the “creator” still seeming angry mentioned the account of some copyright-free music page pointing out that only electronic music will be used going forward, even though it won’t fit the nature video (for which some piano music was ~~chosen~~ stolen).
 
 ## Third Act
 
