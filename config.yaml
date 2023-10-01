@@ -105,3 +105,11 @@ languages:
         - name: Contact me
           weight: 5
           url: contact/
+security:
+  exec:
+    allow:
+      - '^(dart-)?sass(-embedded)?$'
+      - '^go$'
+      - '^npx$'
+      - '^postcss$'
+      - '^asciidoctor$'
