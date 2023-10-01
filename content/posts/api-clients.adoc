@@ -1,0 +1,437 @@
+---
+title: "API Clients for Testing and Beyond - Alternatives to Postman (and Insomnia)"
+date: 2023-10-01T09:17:02+02:00
+draft: false
+description: "Collection of API clients for exploration and testing of web APIs, featuring Postman, Insomnia, Kreya, httpiness, Advanced REST Client, Hoppscotch, Firecamp, Testfully, HTTPie, Bruno, and SoapUI."
+slug: "web-api-clients"
+categories:
+- API
+- Testing
+- Tools
+tags:
+- api
+- apiclient
+- postman
+- insomnia
+- kreya
+- httpiness
+- advancedrestclient
+- hoppscotch
+- firecamp
+- testfully
+- httpie
+- bruno
+- soapui
+- test
+---
+
+Back in May, Postman announced a potentially ground-breaking change: https://blog.postman.com/announcing-new-lightweight-postman-api-client/[Scratch Pad will be removed] in favor of a "lightweight API client".
+
+Until then, Postman seemed to be the de-facto standard for API testing but with the announced change that basically comes with the requirement to have a Postman account and to sync all data to the cloud, many people started to look for alternatives.
+For that very reason, ThoughtWorks recommended https://www.thoughtworks.com/en-us/radar/tools/insomnia[Insomnia] in their latest issue of the Technology Radar around two weeks after Postman finally removed Scratch Pad and essentially mandated cloud sync.
+
+Irony of that story: One day later, Kong announced the https://konghq.com/blog/product-releases/insomnia-8-0[new major version of Insomnia] which is a significant rebuild of the tool and includes an exciting "new" feature:
+
+> Kong Insomnia 8.0 introduces the highly requested Scratch Pad capability that our community can use to try out the product without needing an Insomnia account to get started. [...] Scratch Pad data is always stored locally, even when creating a Kong Insomnia account
+
+What they do not explicitly mention: Projects and collections known from the previous version require an account now, and with an account comes cloud sync, literally overnight and without prior announcement.
+Even the selective export of data is not possible anymore, so the new Scratch Pad does not really help with the problem that many people have with Postman that made them look for an alternative in the first place.
+
+What other options are out there?
+Let us have a look at some of the tools that I found.
+
+== Introduction
+
+The first thing I noticed was that it is not easy to find alternatives to Postman. Postman is so dominant that it is hard to find other tools, especially with specific requirements in mind.
+
+I still could not find a tool that satisfies all my requirements, but I found some options that come close.
+And, if your requirements are different, maybe less rigid, you might find a tool that is a perfect fit for you.
+
+It is noteworthy that I am not looking for a tool that is only useful for testing APIs.
+I am looking for a tool that is useful for testing APIs, but whose primary purpose is to be a general-purpose tool for working with APIs, like exploring or debugging.
+In other words, I am looking for something I can use to manually interact with an API, and additional features for automated testing are a bonus.
+
+== Requirements
+
+In order to better understand my findings, it might be useful to have at least a rough idea of the requirements and context that guided my search.
+
+=== Context
+
+The first thing to note is that I am looking for a tool that can be used in the corporate environment of a consultancy company that works with large enterprise customers.
+Teams on both sides, the customer and the consultancy, need to be able to work with the tool.
+
+Due to the nature of the business, the tool needs to be able to handle sensitive data, and it needs to be able to be used in a way that does not violate any data protection regulations.
+
+We already have our collections and environments set up in Postman, so it would be great if we could import them into the new tool without too much effort.
+
+By the way, the main focus are HTTP web APIs.
+GraphQL, gRPC and the like are not in scope of the search, although it would be nice to have support for them, of course.
+
+In short, the requirements based on the context are:
+
+- Must be available for macOS, Linux, and Windows
+- All data must be stored locally -- no cloud sync
+- Must be able to import and export data to allow for sharing with the team
+- Must be able to work with APIs that use HTTP and HTTPS
+
+=== Features
+
+The following list of features is not exhaustive but should give you a rough idea of what I am looking for:
+
+- We need to be able to organize API requests in collections, ideally even projects/workspaces.
+
+- Collections need to support folders, even nested so that we can organize our APIs, tests or maintenance workflows, etc. based on systems, categories, and so on.
+
+- There needs to be multiple environments (scoped to the workspace/project), like development, staging, and production. Collection- and folder-level environments are nice to have.
+
+- As authentication means, Basic Authentication, API Key, OAuth 2.0 with client credentials flow and authorization code flow, as well as client certificate authentication need to be supported.
+
+- Some kind of preparation scripts need to be supported, like setting some request parameter based on the response of another request.
+
+- Header parameters, path parameters, and query parameters need to be set as "real" parameters, also in the tool: For instance, when there is a request to retrieve a user by ID, it should be possible to use something like `GET /users/\{userId}` where the value of `userId` is set for the request rather than having to add the request as `GET /users/a2b8ef58-ae0a-474a-84da-dc156bcce6b8`.
+
+== Alternatives
+
+With the requirements in the back of our heads and the context in mind, let us have a look at some of the tools that I found.
+
+Be aware that the heading "Alternatives" might be a bit misleading as some tools are not really alternatives.
+In fact, some of them I gave a try but clearly cannot recommend using them at all.
+
+In the following, we will have a quick look at these API clients:
+
+- <<postman, Postman Lightweight API Client>>
+- <<insomnia, Insomnia by Kong>>
+- <<kreya, Kreya>>
+- <<httpiness, httpiness>>
+- <<acr, Advanced REST Client by MuleSoft>>
+- <<hoppscotch, Hoppscotch>>
+- <<firecamp, Firecamp>>
+- <<testfully, Testfully>>
+- <<httpie, HTTPie>>
+- <<bruno, Bruno>>
+- <<soapui, SoapUI Open Source by SmartBear>>
+
+[[postman]]
+=== The Official - Postman Lightweight API Client
+
+{{< figure src="/images/posts/api-clients/postman.png" alt="Postman screenshot" >}}
+
+https://www.postman.com/[Postman] is the tool that started it all, and it probably is still the most popular tool for working with APIs.
+
+However, this is the only reason it appears on the list of alternatives. It is not just that I do not like the direction Postman is going and do not want to use it anymore.
+
+In fact, I tried to use at least their new and shiny "lightweight API client" as an alternative, but it failed miserably as I could not even import an OpenAPI spec file.
+
+Without an account, Postman is not usable anymore, and with an account, all data is synced to the cloud -- absolutely no-go and deal-breaker for me.
+
+[[insomnia]]
+=== The Powerful Copycat - Insomnia by Kong
+
+{{< figure src="/images/posts/api-clients/insomnia.png" alt="Insomnia screenshot" >}}
+
+At the moment, https://insomnia.rest[Insomnia] still seems to be the most-promising alternative to Postman, although a quite annoying one lately.
+
+A lot of well-known functionality from Postman requires is not supported out of the box, like request tabs or "true" path parameters that can be set just like query parameters.
+However, there are plugins for many of these features.
+
+In general, plugins are actually also a big plus of Insomnia: Want to use credentials from an Azure Key Vault, for instance? https://insomnia.rest/plugins/insomnia-plugin-azure-keyvault-secrets[Here you go!]
+
+Coming from Postman, it took some time to get used to Insomnia but the built-in functions, the option to use variables in other variables, request chaining as an alternative to Postman's pre-request scripts, or the on-the-fly execution of requests to acquire OAuth tokes are quite nice.
+
+Nevertheless, I cannot look past the fact that Insomnia also has some noticeable bugs.
+All in all, it does not feel as stable and mature as Postman, and the fact that they basically went the "Postman way" does not make it more attractive either.
+This change without prior announcement and without any option to opt-out is quite a bold move and rightly upsets the community.
+
+[[kreya]]
+=== The Relief - Kreya
+
+{{< figure src="/images/posts/api-clients/kreya.png" alt="Kreya screenshot" >}}
+
+https://kreya.app/[Kreya] is very welcoming.
+When you open it for the first time, it lets you start with a sample project and takes you on a tour through its features.
+This is not just unique but also very smart and helpful.
+
+It immediately guides you to the project settings, and you get to know that authentication can be configured at the project level to be referenced by requests.
+
+Also, you learn about importers that can be run multiple times to keep your project up-to-date with the latest changes of the OpenAPI spec file, for instance.
+In fact, this is a feature I missed in Postman where a re-import would result in a new collection. I am really glad to find this feature in Kreya.
+Whether it is actually useful in practice (and working as expected), though, is a different question.
+
+Right after the importers, Kreya tells you about its support for client certificate authentication.
+
+While walking through the UI, from the settings to the operations view, it clearly and transparently points out what is a paid feature: scripting for defining tests, running pre-request scripts or for dynamically updating variables, for instance.
+
+What is a bit uncommon at first is the need to define operations using relative request paths, like `/users/\{userId}` with the base URL being defined at folder-level.
+However, this is actually not a bad idea as it is a good way to avoid duplicate configuration, and most collections are set up that way anyway -- just with more redundancy.
+
+And, yes, "true" path parameters are supported, and Kreya uses the same syntax as OpenAPI to define them in the request path.
+
+All data is stored locally. Instead of a giant JSON or YAML file, Kreya uses the folder structure from the collection also on the file system.
+There is a folder for folders, a file per request, and environment, etc.
+Different file extensions are used which allows for easy and targeted configuration of encryption, for instance.
+
+This all sounds too good to be true, right?
+
+And it is, unfortunately: Users who depend on the ability to use pre-request scripts and post-request scripts, cannot use the free version of Kreya at least.
+
+Besides that, using Kreya is very good experience, literally relieving to see almost all required capabilities being supported out of the box, without the need to create an account.
+The way data is shared with others is completely left to the user, and the way data is stored locally is very transparent and easy to understand and obviously was designed with Git in mind.
+
+[[httpiness]]
+=== The Plain - httpiness
+
+{{< figure src="/images/posts/api-clients/httpiness.png" alt="httpiness screenshot" >}}
+
+https://www.httpiness.com/[Httpiness] is special.
+It is mainly listed here because of its interesting approach to put HTTP requests into the focus.
+In fact, the user interface is very minimalistic and the request view is essentially based on the anatomy of an HTTP request.
+
+Parameters play another essential role.
+They are organized in parameter presets (also known as environments) and can be user anywhere in requests. Also, parameters are shared across the entire collection.
+In essence, httpiness merges the concepts of environment variables and request parameters into one simple but powerful thing.
+This is definitely a nice touch.
+
+Authentication configuration is also very simple: It is defined once as an independent object that is then used in requests.
+
+All data is stored locally, and in one big JSON file.
+
+However, httpiness lacks the ability to import OpenAPI specifications, and it comes with very limited configuration options. Setting client certificates, for instance, is not on the list.
+Importing OpenAPI spec files is also not supported. Importing Postman collections is available, though.
+
+Httpiness' philosophy is to keep things simple, and it does that very well.
+It is targeted at developers who want to work with APIs alongside their development work, for instance to manually send a few requests to quickly test something.
+It is not trying to be a general-purpose API client with all kinds of bells and whistles, and in the end it turns out to be a very nice tool for its purpose.
+
+[[acr]]
+=== The Promising & Confusing - Advanced REST Client by MuleSoft
+
+{{< figure src="/images/posts/api-clients/advanced-rest-client.png" alt="Advanced REST Client screenshot" >}}
+
+https://install.advancedrestclient.com/[Advanced REST Client] is a name that raises expectations.
+Knowing that it is from MuleSoft, does not lower them either.
+
+After Kong, and also Postman nowadays, MuleSoft is another big player in the API space, and they are particularly known for their API management platform.
+So they should know what they are doing and what matters for API developers, right?
+
+For sure, Advanced Rest Client indeed is an advanced tool.
+It is the first tool I found that supports the configuration of multiple authentication mechanisms for the same request, including client certificate authentication!
+For OAuth 2.0 authorization code flow, the required redirect URI is presented right away.
+
+It also provided per-request configuration options for SSL validation, redirects, or even timeouts, and more. Capabilities unknown in other API clients.
+
+However, the UI is not very intuitive.
+Therefore, I am not entirely sure if the confusion that follows is due to the tool or due to my lack of understanding of the tool:
+
+Pre-request scripts and post-request scripts, or at least something similar exists that is quite powerful and very limited at the same time:
+Based on conditions, you can do very few things:
+set a variable, set a cookie, or delete a cookie. That is it.
+
+To be honest, the scripts known from Postman or Insomnia plugins seemed way more powerful and flexible to me -- more advanced, if you will.
+
+Also, looking at the screenshot closely, you might notice that it does not mention parameters at all. Query parameter, path parameter, whatever. No worries, in the request URL editor menu, at least query parameters can be added, and URL encoding or decoding can be configured.
+No word about path parameters, though.
+
+By the way, the export functionality is similarly confusing: You can export all data, or a project, or you call the export from a specific request.
+The all data export is highly configurable: Environments and history can be included or excluded, just like cookies, etc.
+The request export always includes the history without any configuration options, and the project export includes only requests, without history. Both have no further configuration options.
+All data and request export use JSON format, while the project export uses `*.arc` but the content is JSON with the same structure as from the other exports again. Confusing.
+
+And the import of an OpenAPI spec file? Well, it is supposed to be supported but just did not do anything when I tried it with an OpenAPI v3.0.2 JSON.
+In the general data import, it says Open API spec projects can be imported from ZIP files that contain only the project.
+So I also tried that... No luck, although the app this time did not do nothing in this case, but it just crashed and closed without any error message.
+The import of Postman data at first looked promising, but the imported project then could not be opened and used:
+
+    DataError: Failed to execute 'get' on 'IDBObjectStore': No key or key range specified.
+
+Can I recommend Advanced REST Client? Well, I wish I could.
+It certainly is advanced, but being a viable alternative takes more than that.
+
+[[hoppscotch]]
+=== The Online-First - Hoppscotch
+
+{{< figure src="/images/posts/api-clients/hoppscotch.png" alt="Hoppscotch screenshot" >}}
+
+At first glance, https://hoppscotch.io/[Hoppscotch] is an interesting option that https://dev.to/liyasthomas/i-created-postwoman-an-online-open-source-api-request-builder-41md[started as a minimal and efficient open-source API client], actually inspired by Postman.
+Thus, the UI reminds of the old days of Postman.
+It is available as a web app or browser extension, and you can also https://docs.hoppscotch.io/documentation/self-host/getting-started[host it yourself].
+
+That, however, already feels a bit strange to me. Why does an API client have to be a web app running in the browser? Why does it have to be hosted on a server?
+
+According to the webpage, a desktop client is coming soon, though, which might make Hoppscotch a viable option for everyone who has reservations about an "online" API client.
+
+By the way, talking about _online_, Hoppscotch also lets you create an account and use cloud sync -- this time configurable, though.
+
+However, if you have the same requirements as we do, you will need to look further as it is still lacking https://github.com/hoppscotch/hoppscotch/issues/392[support for client certificates].
+
+[[firecamp]]
+=== The Login-Obsessive - Firecamp
+
+{{< figure src="/images/posts/api-clients/firecamp.png" alt="Firecamp screenshot" >}}
+
+https://firecamp.io/[Firecamp] is another interesting API client that takes things to a new level.
+
+The import of OpenAPI specs just works fine and automatically creates a collection with folders. I my API client exploration adventure, I learned to appreciate that already.
+
+A unique extra feature of Firecamp are two kinds of environments that live next to each other: a workspace environment and a collection environment, this might be useful for selecting different request data or user profiles.
+However, I am not sure if the workspace and collection levels come in handy in practice here, or if they actually make things more complicated.
+
+Unfortunately, we also will not figure that out as Firecamp is enforcing the creation of an account very aggressively at unseen levels and in unexpected places:
+
+- You want to create a folder in the collection that was generated from the OpenAPI spec? Sign in first!
+- You want to create another collection? Sign in first!
+- You want to access the application settings? Sign in first!
+- You want to save a request? Sign in first!
+
+That is really sad and annoying for an otherwise promising tool.
+
+It even supports the rarely found option to express path parameters as parameters, which is actually quite nice. It would be nicer, though, if these parameters would actually get set in requests in the end.
+
+I do not know whether the use of path variables would just require a user account and being logged in (SCNR), or if it is a bug.
+At least, that is something that is simply not working, and not presenting a login modal.
+
+[[testfully]]
+=== The Testing Expert - Testfully
+
+{{< figure src="/images/posts/api-clients/testfully.png" alt="Testfully screenshot" >}}
+
+https://testfully.io[Testfully] clearly jumped on the bandwagon of the Postman announcement and https://testfully.io/blog/testfully-offline/[announced their new offline mode] shortly after.
+Actually, just like other tools, Testfully also lets you create an account and collaborate with others (and sync your data to the cloud).
+
+The tool has a nice UI and is easy to use, but it is also a bit limited in its functionality.
+
+Or to put it differently: It is a nice niche tool with a strong focus on testing, which is not a surprise given the name.
+It has some pretty neat features for testing in particular, validation of API responses or request chains look like first-class citizens, but it is not a general-purpose API client in general.
+
+With that testing focus in mind, it also makes a lot of sense to find SSL certificate validation as a configuration option for environments, folders and requests. Also the type property of environments to indicate whether a VPN connection is required to use an environment, for instance, is a nice touch.
+
+However, the import fails to import an OpenAPI v3 spec file, but Testfully is supposed to support Swagger, Postman and Insomnia formats.
+Unfortunately, there does not seem to be a way to export the data again, though.
+
+And, I will probably just stop mentioning client certificate authentication.
+Instead, there seems to be good support for OAuth 2.0, including the authorization code flow. What stands out is that the configuration explicitly states the redirect URL that needs to be configured in the OAuth client.
+
+What it also does not fail to state is that you need to upgrade to get the full experience, in several places:
+
+> You can use OAuth2, but the changes will not be stored permanently. Upgrade to the Lite plan for storing OAuth2 settings, and unlocking folder-based and environment-based authorization settings.
+
+[[httpie]]
+=== The Unorganized - HTTPie
+
+{{< figure src="/images/posts/api-clients/httpie.png" alt="HTTPie screenshot" >}}
+
+https://httpie.io/[HTTPie] is a simple API client that might be sufficient for basic use cases.
+
+You are dealing with complex APIs and would like to organize your requests in collections with folders and sub-folders? Sorry, HTTPie is not for you. There is no support for folders in collections.
+
+You want to import an OpenAPI spec file? Sorry, HTTPie is not for you. The import only supports Postman and Insomnia formats (but not everything) -- and cURL.
+
+Authentication can be configured at level of the collection or for specific requests, which is actually quite nice but also not too helpful when there is no support for folders.
+And if you want HTTPie to acquire OAuth access tokens for you? Sorry, HTTPie is not for you. You can only set the token manually.
+
+Lacking support for client certificates should not be a surprise at this point.
+
+All in all, HTTPie is a nice tool for simple use cases, but it is not a viable alternative to Postman. It more or less is a nice cURL UI.
+
+But: You can create an account to additionally get cloud sync. Yay!
+And, you can also create more spaces to organize your requests.
+
+Without an account, you start with an "incognito space" that is kept locally but cannot be shared with others as there is no export option.
+
+[[bruno]]
+=== The Ambitious - Bruno
+
+{{< figure src="/images/posts/api-clients/bruno.png" alt="Bruno screenshot" >}}
+
+https://www.usebruno.com/[Bruno] is on the list because it comes with the aim to "revolutionize the status quo represented by Postman and similar tools".
+This is also reflected in the https://www.usebruno.com/manifesto[Bruno Manifesto].
+
+Instead of using YAML or JSON file formats to describe requests and collections, Bruno defines its own markup language which is designed to be Git-friendly.
+
+While all that sounds pretty promising, you hit the wall pretty quickly when trying to use Bruno for real-world use cases. With that, nothing extraordinary is meant, just some very basic requirements when working with APIs:
+
+- import an OpenAPI spec file
+- configure any authentication for a request
+
+It does also not help when Bruno is able to import data from Postman and Insomnia when it completely misses out on the authentication configuration. It is just not there anymore after the import.
+
+There still is a lot of work to do before Bruno can be considered a viable API client.
+
+The high goals, the little dog reaching for the stars, is worth a honorable mention, though as it is one of the very few tools that puts offline and local usage first.
+And, it does not even think of cloud sync.
+
+[[soapui]]
+=== The Unusable Ugly - SoapUI Open Source by SmartBear
+
+{{< figure src="/images/posts/api-clients/soapui.png" alt="SoapUI screenshot" >}}
+
+https://www.soapui.org/tools/soapui/[Soap UI] was the first API client I used for exploring and testing API (before switching to Postman) years ago.
+When looking for an alternative, I was actually mainly looking if SoapUI is still around -- and whether it still relies on that weird XML file format that made collaboration quite difficult back then.
+
+Oh boy, it is still around, and it still uses that weird XML file format.
+The whole experience could not be more frustrating (and different from the other tools I looked at):
+
+The UI looks like it is from the 90s, and it is a mess.
+Resizing windows is a pain, and the UI is not responsive at all.
+Modals open everywhere and on top of each other.
+The font is hard to read, the cluttered UI is slow.
+Really, it is a mess.
+
+It took me a long time to add even a single request to the project, or actually the service in the project.
+Honestly, I have a hard time understanding what is going on in SoapUI, and I really do not want to spend more time on it.
+
+Supported authentication mechanisms? No clue.
+I do not even know where I should start looking for them.
+
+I rather start looking for the world (or industry) in which the broad statement from the website is true: "The Industry’s #1 API Testing Tool".
+
+To be fair, there is a huge amount of documentation.
+The https://www.soapui.org/getting-started/10-tips-for-the-soapui-beginner/[Top 10 Tips for the SoapUI Beginner] alone are more extensive than the entire documentation of other tools I looked at.
+Documentation is great, but it should not be necessary to read a book before you can use a tool, and the best documentation is useless if the tool is not usable because of awful UX.
+
+== What else?
+
+Well, there are a lot of other tools out there, and the list above is just the portion of tools I at least gave a quick try with a special focus on previously experienced pain points.
+
+There is also the crowd out there that helps finding alternatives.
+So if you did not find your new favorite API client in the list above, maybe you will find it in one of the following lists:
+
+- https://alternativeto.net/software/postman/[Postman Alternatives on AlternativeTo]
+- https://geekflare.com/best-postman-alternatives/[12 Best Postman Alternatives to Test API for Developers on Geekflare]
+- https://testfully.io/blog/top-5-postman-alternatives/[Top 5 Postman Alternatives according to Testfully (blog post from 2021)]
+
+When looking at these lists, you will also find some tools that are no standalone applications but IDE extensions for Visual Studio Code or IntelliJ IDEA, for instance.
+Those are not in scope of this article, but they might be worth a look as well.
+An example to mention here is the https://www.jetbrains.com/help/idea/http-client-in-product-code-editor.html[IntelliJ HTTP Client Plugin]. It entered the latest issue of the ThoughtWorks Technology Radar in the _Tools_ section where it is https://www.thoughtworks.com/en-us/radar/tools/intellij-http-client-plugin[recommended to be tried] (together with Insomnia).
+
+== Conclusion
+
+Well, I do not really know what to say.
+I looked at quite a bunch of tools, and I did not find a single one that I can wholeheartedly select as a viable alternative to Postman as we have all known it.
+
+Insomnia came closest, was even superior in some areas, but the recent changes and the way they were introduced are a huge disappointment, and they set the tool back significantly -- from both an "emotional" perspective and from a functionality perspective.
+
+While many of the API clients have cool and sometimes unique features, none could satisfy all the requirements stated in the beginning and completely convince me.
+
+It is astonishing to see how almost all sort of fail in one way or another, and some of them even being just not usable at all.
+
+However, I am also very happy to see that there is also one tool, https://kreya.app/[Kreya], that seems to put the priority on being "just" a local API client but doing that very well.
+In fact, its only "shortcoming" is the lack of support for pre-request scripts and post-request scripts in the free version.
+If you do not rely on such scripts or do not use the API client for testing, you might have just found your new favorite API client.
+
+In general, the biggest challenge appears to be the support for authentication mechanisms, especially client certificate authentication being mentioned one last time here.
+It is immediately followed by the need to work offline and locally, without an account and without cloud sync.
+Surprisingly, import and export of data is also not as straightforward as I thought it would be.
+
+Sure, if there was this one API client that provides the same features as Postman and Insomnia do, without any mandatory user account or cloud connection, we most likely would all have heard about it somewhere already since such powerful tools do not come out of nowhere.
+There is a reason why Postman became so popular, and there is a reason why Insomnia was recommended by ThoughtWorks.
+
+With these tools at hand, there was not too much need to look for something else.
+It might be a lucky coincidence that https://kreya.app/blog/how-we-built-kreya/[Kreya came to live a few years ago because of some limitations in gRPC support in the other tools] and could evolve into a full-fledged API client and viable alternative to Postman and Insomnia in the scope of their initial core capabilities.
+And still, Kreya does not try to be everything at once. For instance, there still do not seem to be ambitions to become an API platform or ecosystem.
+It is here to make calling APIs easy. Nothing more, nothing less. And so far, maybe because of its closed source, it is not very popular (yet).
+
+With the recent changes in Postman and Insomnia, the situation changed, though.
+The search for alternatives is on, and I am quite certain it is not just me who is looking for a new favorite API client.
+
+There is a lot of potential and a good chance that the next star could arise from the list of tools above, be it Kreya or another tool.
+I think we will see some interesting developments in the future.
