@@ -65,11 +65,11 @@ params:
     - name: Facebook
       icon: fab fa-facebook
       weight: 6
-      url: 'https://www.facebook.com/andreas.siegel.dresden'
+      url: 'https://www.facebook.com/andreas.siegel.chemnitz'
     - name: LinkedIn
       icon: fab fa-linkedin
       weight: 8
-      url: 'https://www.linkedin.com/pub/andreas-siegel/99/1a2/4a6'
+      url: 'https://www.linkedin.com/in/andreassiegel'
 taxonomies:
   category: categories
   series: series
