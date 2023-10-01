@@ -66,24 +66,10 @@ params:
       icon: fab fa-facebook
       weight: 6
       url: 'https://www.facebook.com/andreas.siegel.dresden'
-    - name: Twitter
-      icon: fab fa-twitter
-      weight: 7
-      url: 'https://twitter.com/andreassiegel/'
     - name: LinkedIn
       icon: fab fa-linkedin
       weight: 8
       url: 'https://www.linkedin.com/pub/andreas-siegel/99/1a2/4a6'
-    - name: Xing
-      icon: fab fa-xing
-      weight: 9
-      url: 'https://xing.to/andreassiegel'
-    - name: RSS
-      icon: fas fa-rss
-      weight: 100
-      url: 'https://myhugosite.com/index.xml'
-      rel: alternate
-      type: application/rss+xml
 taxonomies:
   category: categories
   series: series
