@@ -2,7 +2,7 @@
 title: "API Clients for Testing and Beyond - Alternatives to Postman (and Insomnia)"
 date: 2023-10-01T09:17:02+02:00
 draft: false
-description: "Collection of API clients for exploration and testing of web APIs, featuring Postman, Insomnia, Kreya, httpiness, Advanced REST Client, Hoppscotch, Firecamp, Testfully, HTTPie, Bruno, and SoapUI."
+description: "Collection of API clients for exploration and testing of web APIs, featuring Postman, Insomnia, Insomnium, Kreya, httpiness, Advanced REST Client, Hoppscotch, Firecamp, Testfully, HTTPie, Bruno, and SoapUI."
 slug: "web-api-clients"
 categories:
 - API
@@ -13,6 +13,7 @@ tags:
 - apiclient
 - postman
 - insomnia
+- insomnium
 - kreya
 - httpiness
 - advancedrestclient
@@ -101,6 +102,7 @@ In the following, we will have a quick look at these API clients:
 
 - <<postman, Postman Lightweight API Client>>
 - <<insomnia, Insomnia by Kong>>
+- <<insomnium, Insomnium>>
 - <<kreya, Kreya>>
 - <<httpiness, httpiness>>
 - <<acr, Advanced REST Client by MuleSoft>>
@@ -141,6 +143,23 @@ Coming from Postman, it took some time to get used to Insomnia but the built-in 
 Nevertheless, I cannot look past the fact that Insomnia also has some noticeable bugs.
 All in all, it does not feel as stable and mature as Postman, and the fact that they basically went the "Postman way" does not make it more attractive either.
 This change without prior announcement and without any option to opt-out is quite a bold move and rightly upsets the community.
+
+[[insomnium]]
+=== The Previous - Insomnium
+
+{{< figure src="/images/posts/api-clients/insomnium.png" alt="Insomnium screenshot" >}}
+
+https://github.com/ArchGPT/insomnium[Insomnium] is a fork of Insomnia that was created in response to the changes in Insomnia 8.0.
+
+There is not too much to say about it because it is basically the previous version of Insomnia with everything network-related removed (user login, tracking, etc.).
+This new old version of the tool runs 100% locally now.
+
+If you already migrated to Insomnia, you should be able to pick up where you left off with Insomnium.
+
+However, time has to show if this fork will be maintained going forward, or if it will just preserve the last version of Insomnia as we knew it.
+At least there is the https://news.ycombinator.com/item?id=37714112[expressed commitment to maintain the fork and improve it long-term].
+
+[[kreya]]
 
 [[kreya]]
 === The Relief - Kreya
