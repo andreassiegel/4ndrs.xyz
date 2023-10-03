@@ -2,7 +2,7 @@
 title: "API Clients for Testing and Beyond - Alternatives to Postman (and Insomnia)"
 date: 2023-10-01T09:17:02+02:00
 draft: false
-description: "Collection of API clients for exploration and testing of web APIs, featuring Postman, Insomnia, Insomnium, Kreya, httpiness, Advanced REST Client, Hoppscotch, Firecamp, Testfully, HTTPie, Bruno, and SoapUI."
+description: "Collection of API clients for exploration and testing of web APIs, featuring Postman, Insomnia, Insomnium, Kreya, httpiness, Advanced REST Client, Milkman, Hoppscotch, Firecamp, Testfully, HTTPie, Bruno, and SoapUI."
 slug: "web-api-clients"
 categories:
 - API
