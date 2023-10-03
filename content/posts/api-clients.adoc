@@ -17,6 +17,7 @@ tags:
 - kreya
 - httpiness
 - advancedrestclient
+- milkman
 - hoppscotch
 - firecamp
 - testfully
@@ -106,6 +107,7 @@ In the following, we will have a quick look at these API clients:
 - <<kreya, Kreya>>
 - <<httpiness, httpiness>>
 - <<acr, Advanced REST Client by MuleSoft>>
+- <<milkman, Milkman>>
 - <<hoppscotch, Hoppscotch>>
 - <<firecamp, Firecamp>>
 - <<testfully, Testfully>>
@@ -158,8 +160,6 @@ If you already migrated to Insomnia, you should be able to pick up where you lef
 
 However, time has to show if this fork will be maintained going forward, or if it will just preserve the last version of Insomnia as we knew it.
 At least there is the https://news.ycombinator.com/item?id=37714112[expressed commitment to maintain the fork and improve it long-term].
-
-[[kreya]]
 
 [[kreya]]
 === The Relief - Kreya
@@ -221,6 +221,9 @@ Httpiness' philosophy is to keep things simple, and it does that very well.
 It is targeted at developers who want to work with APIs alongside their development work, for instance to manually send a few requests to quickly test something.
 It is not trying to be a general-purpose API client with all kinds of bells and whistles, and in the end it turns out to be a very nice tool for its purpose.
 
+Its simplicity put aside, the usefulness of httpiness can come to a sudden end when you attempt to fetch an OAuth access token: What is working in Insomnium, for instance leads to `invalid grant` or `invalid client credentials` errors in httpiness.
+That is definitely causes no happiness.
+
 [[acr]]
 === The Promising & Confusing - Advanced REST Client by MuleSoft
 
@@ -264,6 +267,45 @@ The import of Postman data at first looked promising, but the imported project t
 
 Can I recommend Advanced REST Client? Well, I wish I could.
 It certainly is advanced, but being a viable alternative takes more than that.
+
+[[milkman]]
+=== The Unintuitive - Milkman
+
+{{< figure src="/images/posts/api-clients/milkman.png" alt="Milkman screenshot" >}}
+
+https://milkman.dev[Milkman] is a tool that did not show up on any of the lists I found, so it is even harder to find than Kreya. Eventually, it appeared in https://www.linkedin.com/feed/update/urn:li:activity:7114881772982566912[another post on LinkedIn].
+
+Also, Milkman is heavily inspired by Postman but came to live already a few years ago, the first release being in 2019.
+The motivation behind Milkman was to create a tool that is less hungry for resources than Postman, and all the other Electron-based apps. Milkman is based on JavaFX.
+Although programming languages and underlying frameworks were no focus of my search at all, and I did not really pay attention to that part, I realize the majority of tools are written in JavaScript or TypeScript.
+
+Milkman provides workspaces that can optionally be synced with Git.
+
+OpenAPI specifications can be imported, at least in YAML format, and Milkman automatically creates a collection -- without folders, though.
+In a collection, new folders can be created to organize requests using various protocols, not just HTTP. GraphQL, gRPC, Websockets, and even SQL and CQL are supported.
+
+However, giving Milkman a try I felt really stupid because I could not figure out how to create a new collection by hand without importing something (Postman and cURL are supported, Insomnia not, by the way).
+The https://milkman.dev/docs/[documentation] was not of any help either.
+It primarily focuses on plugins and the development of plugins.
+Just when I wanted to give up, and added my sample request to the collection of the imported API spec, I realized a collection is implicitly created when you save the new request in a "root folder" (collection) that does not yet exist.
+Okay, I can work with that.
+
+Nevertheless, the user experience is not great.
+The interface is not really intuitive.
+How do you configure authentication for a request, for instance?
+You can configure OAuth authentication or API Key at the same "global" level as environments, but separately.
+The result, however, is similar:
+You get variables you can use in requests in the right place.
+For example, if you configured an OAuth secret, you can add an `authorization` header to your request and assign the value `Bearer {{key:my-oauth-config}}` to it.
+Uff, that is not exactly straightforward.
+
+Another mystery is the authorization code flow support:
+You cannot configure a redirect URI, and everytime you attempt to fetch a token, another redirect is used (e.g., `http://localhost:49789/` or `http://localhost:49754`).
+How am I supposed to configure the allowed redirect URIs in the OAuth client?
+
+And, there is also no sign of HTTP Basic authentication or client certificate authentication.
+
+Milkman supports scripting, though. JavaScript scan be executed before and after requests.
 
 [[hoppscotch]]
 === The Online-First - Hoppscotch
