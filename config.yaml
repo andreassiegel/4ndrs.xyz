@@ -10,7 +10,7 @@ canonifyurls: true
 pygmentsstyle: friendly
 pygmentscodefences: true
 pygmentscodefencesguesssyntax: true
-disqusShortname: 4ndrs-xyz
+#disqusShortname: 4ndrs-xyz
 googleAnalytics: G-3KVF1J8CS4
 related:
   threshold: 80
