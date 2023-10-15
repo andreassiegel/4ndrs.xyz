@@ -25,6 +25,8 @@ tags:
 - bruno
 - soapui
 - test
+series:
+- API Clients
 ---
 
 Back in May, Postman announced a potentially ground-breaking change: https://blog.postman.com/announcing-new-lightweight-postman-api-client/[Scratch Pad will be removed] in favor of a "lightweight API client".

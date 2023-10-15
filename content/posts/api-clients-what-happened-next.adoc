@@ -1,0 +1,609 @@
+---
+title: "Two Weeks Later: What's the API Client World up to?"
+date: 2023-10-15T18:03:02+02:00
+draft: false
+description: "Exploration of the evolving landscape of API clients as alternatives to Postman and Insomnia, featuring Insomnium, Kreya, httpiness, Advanced REST Client, Milkman, Hoppscotch, Firecamp, Testfully, HTTPie, Bruno, and SoapUI."
+slug: "web-api-clients-whats-next"
+categories:
+- API
+- Testing
+- Tools
+tags:
+- api
+- apiclient
+- postman
+- insomnia
+- insomnium
+- kreya
+- httpiness
+- advancedrestclient
+- milkman
+- hoppscotch
+- firecamp
+- testfully
+- httpie
+- bruno
+- soapui
+- test
+series:
+- API Clients
+---
+
+Pretty much exactly two weeks ago, link:https://4ndrs.xyz/posts/web-api-clients/[I took a look at different options out there in the wild to find an alternative to Postman and Insomnia] after both went straight towards cloud sync and mandatory accounts.
+
+What I found back then caused a bit mixed feelings since there were several promising candidates but it was really hard or even impossible for me to identity one that fully satisfies all my needs and requirements.
+
+However, world is not standing still.
+In fact, it is moving fast, and the API client world is no exception.
+For example, it took only two days for Insomnia getting forked.
+As quite a lot of people are not happy with the recent changes in both Postman and Insomnia, this is not a big surprise, and I can image the whole situation also comes with a lot of motivation and momentum for the developers behind the fork and all the other tools out there.
+So let us revisit them once again, at least checking out some of the recent activity:
+
+- <<postman, Postman>>
+- <<insomnia, Insomnia by Kong>>
+- <<insomnium, Insomnium>>
+- <<kreya, Kreya>>
+- <<httpiness, httpiness>>
+- <<acr, Advanced REST Client by MuleSoft>>
+- <<milkman, Milkman>>
+- <<hoppscotch, Hoppscotch>>
+- <<firecamp, Firecamp>>
+- <<testfully, Testfully>>
+- <<httpie, HTTPie>>
+- <<bruno, Bruno>>
+- <<soapui, SoapUI Open Source by SmartBear>>
+
+What I will be focussing on are recent releases and activity on GitHub (if available).
+
+[[postman]]
+== Postman
+
+link:https://www.postman.com/[Postman] is the one who probably started everything that is currently going on in the world of API clients.
+So let us look at them first.
+
+=== Recent Releases
+
+As far as releases are concerned, there is not too much going on in the Postman world:
+
+Postman seems to be on a monthly release cycle, i.e., there is a minor version increment every month,e.g., v10.18.x in September and v10.17.x in October.
+
+As far as I can tell from looking at the link:https://www.postman.com/release-notes/postman-app/[release notes], there is one main notable change in the versions v10.18 and v10.19: support for MQTT.
+Besides that, there are some improvements for the GraphQL support.
+
+Everything else were just bug fixes.
+In that sense, the september release was accompanied by a total of 5 patch releases.
+
+=== GitHub Activity
+
+As Postman is not open source, there is no actual GitHub repository that could be used to track project activity reliably.
+However, there is https://github.com/postmanlabs/postman-app-support[postmanlabs/postman-app-support] which is used for bug reports and feature requests.
+
+Just looking at the history of GitHub stars, everything looks like business as usual for Postman.
+The ratings are still on a pretty much linear rise:
+
+link:https://star-history.com/#postmanlabs/postman-app-support&Date[{{< figure src="/images/posts/api-clients-what-happened-next/star-history-postman.png" alt="GitHub star history for postmanlabs/postman-app-support" >}}]
+
+At first sight, looking at the link:[Issues] in the repository it looks like there is only the normal buzz going on: discussions about bugs, feature requests, and so on.
+
+With a second look, there are a few interesting discussions going on:
+
+Apparently, Postman started to remove older versions so that they cannot be downloaded and installed anymore. People link:https://github.com/postmanlabs/postman-app-support/issues/12383[complain about that], and they request older versions to be made available again as they would be forced to use another tool otherwise.
+One reason for that is the forced login, so the request is clearly related to recent changes.
+In link:https://github.com/postmanlabs/postman-app-support/issues/12398[another issue] this is even considered a regression forcing users to stop using the app.
+
+In a similar way, users are looking for ways to link:https://github.com/postmanlabs/postman-app-support/issues/12369[downgrade the app to an older version] or to link:https://github.com/postmanlabs/postman-app-support/issues/6999[disable automatic updates].
+They are even reverse engineering the application and modify the code so that they can work around the recent changes so that they can continue to use Postman in some way, as also the link:https://github.com/postmanlabs/postman-app-support/issues/11661[request to create offline workspaces] appears to be a dead end.
+
+In a nutshell, Postman is giving users a hard time.
+In some cases, after using the app for a decade, they get really creative to find ways to continue using it.
+However, the company behind Postman does not seem to be interested in supporting them.
+In fact, they are actually more or less actively working against them.
+Maybe, this is what you eventually get with venture capital.
+
+On the other hand, as the GitHub star rating and the general buzz in the discussions suggest, users are not running away from Postman in masses.
+There still seem to be enough users who are fine with the changes, or who are not affected by them at all as they were already happily using the cloud sync and benefit from the advantages it brings to teams.
+And, they seem to be willing to pay for that.
+By the way, Postman reached a point where its pricing is comparable to what Atlassian is charging for Jira and Confluence.
+
+[[insomnia]]
+== Insomnia by Kong
+
+link:https://insomnia.rest[Insomnia] really did not make a lot of friends recently.
+The community is upset about the recent changes, and the way they were introduced without prior notice.
+
+That lead to some interesting developments, not just the creation of Insomnium as a fork.
+ that conserves the last _pre-cloud_ version.
+
+=== Recent Releases
+
+It all started with the release of link:https://insomnia.rest/changelog#8.0.0[version 8.0.0] that was celebrated as a major release bringing lots of new features and improvements, e.g., AI, SSO, real-time collaboration, and more.
+Of course, among these also was the cloud sync and the mandatory login to be able to use the app as before (but not without cloud sync).
+
+Who has to work with local data only was forced to use the limited Scratchpad.
+Compared to the previous version, many features were lost, like the support for plugins.
+Only two days after the "bummer release", plugin support was brought back to Scratchpad in link:https://insomnia.rest/changelog#8.1.0[version 8.1.0].
+Besides that, Kong was busy clarifying that Scratchpad is offline made sure users find ways to export their data.
+
+Another 5 days later, link:https://insomnia.rest/changelog#8.2.0[version 8.2.0] made the Scratchpad more user-friendly by allowing users to dismiss the annoying Scratchpad banner.
+The rest was mostly bug fixes.
+
+On October 13, with release link:https://insomnia.rest/changelog#8.3.0[version 8.3.0], Kong did sort of a roll backwards:
+It is now possible to create local projects that do not get synced to the cloud, and the cloud sync seems to have become more explicits, i.e., users can actively choose whether they want to use online or offline projects.
+An account is still required for that, though.
+
+Anyway, Kong seems to be listening to users and is accepting the feedback which is currently leading to some back and forth.
+
+=== GitHub Activity
+
+Despite the angry reaction to the recent events surrounding Insomnia that also included a call to revoke the star rating from the Insomnia repository, the GitHub star rating is still in a steady rise, even with a potential rising tendency:
+
+link:https://star-history.com/#Kong/insomnia&Date[{{< figure src="/images/posts/api-clients-what-happened-next/star-history-insomnia.png" alt="GitHub star history for Kong/insomnia" >}}]
+
+Over the last month, 9 people have worked on Insomnia to make 6 releases of the app possible, 3 of them being beta releases.
+
+Just as with Postman, the link:[Issues] in the repository are full of discussions about bugs, feature requests, and so on.
+
+[[insomnium]]
+== Insomnium
+
+link:https://github.com/ArchGPT/insomnium[Insomnium] came to live to become a better Insomnia, i.e., to become what Insomnia was before the recent changes, going all in on local data and offline workspaces.
+
+With a fresh start, it is interesting to see how the project is evolving.
+
+=== Recent Releases
+
+Let us first take a look at the link:https://github.com/ArchGPT/insomnium/releases[recent releases] which actually means looking at all releases so far.
+
+The first version link:https://github.com/ArchGPT/insomnium/releases/tag/v0.1[v0.1] was released on September 29, 2023 as a fork of Insomnia 2023.5.8 with everything network related removed (user login, tracking, etc.).
+
+Since then, there have been 6 releases in total.
+Initially they were about performance improvements, e.g., by cleaning up the UI.
+
+However, besides that Insomnium has already introduced support for path parameters which previously was not possible without a plugin.
+
+With that, Insomium and Insomnia are already set apart, and there are no plans to merge the two projects again.
+
+=== GitHub Activity
+
+In one of the recent conversations in link:https://github.com/ArchGPT/insomnium/issues[GitHub Issues], the author stated he believes Insomnia and Insomnium are now two different apps with different goals, moving in different directions.
+However, both make perfectly sense and aim to be the best in their respective areas to make their users happy.
+
+Recent reported issues in the repository already illustrate an implication of that: Both apps suffer from the same bugs, and they will have to be fixed in both apps separately.
+Regarding that, link:https://github.com/ArchGPT/insomnium/issues/24#issuecomment-1755766036[the author stated on October 10, 2023]:
+
+> Of course, if I come cross fixes Kong made for front-end bugs, I will try bring them over to Insomnium. Similiarly, for every new fix/thing I implemented in Insomnium, I don't mind Kong taking them to Insomnia. I think that's the kind of silent agreement that comes with forking.
+
+As the fork is not too popular yet there are not so many bugs reported so far.
+Also, some of the recently raised issues seem to be related to Insomnium being a newly published application, e.g., the issues are about the publisher information, the package or application name, or its icon.
+
+The GitHub star rating nicely illustrates the initial momentum of the project, and at the same time shows that it is not too popular yet:
+
+link:https://star-history.com/#ArchGPT/insomnium&Date[{{< figure src="/images/posts/api-clients-what-happened-next/star-history-insomnium.png" alt="GitHub star history for ArchGPT/insomnium" >}}]
+
+Interestingly, the curve flattens out after the initial rise already.
+So the next weeks will still be exciting.
+
+Personally, my main concern with Insomnium is that it is mostly a one-person show.
+The maintainer seems to be motivated and is doing a great job so far, but I am not sure whether he will be able to keep it up in the long run.
+Besides the author, three other people have committed to the repository over the past month (aka since the beginning).
+
+[[kreya]]
+== Kreya
+
+In link:https://4ndrs.xyz/posts/web-api-clients/#kreya[my previous article], link:https://kreya.app[Kreya] was actually my favorite alternative that I am looking forward to give a try and see evolving.
+So I am also really curious what happened recently, i.e., is there any visible momentum in the project as a result of the recent changes in Postman and Insomnia?
+
+=== Recent Releases
+
+That question is quickly answered: No.
+
+There is no recent release. link:https://kreya.app/docs/release-notes/[The last version (v1.11.1) was released on August 23, 2023.]
+
+This is not necessarily a bad thing. It just means that the project is not moving as fast as the others, or it might be more stable than the others.
+
+Another reason could be that Kreya potentially is sort of a side project of https://riok.ch/[riok GmbH] that intentionally is not open source.
+In any case, the release history since the beginning of 2021 shows that there was a new release every few months, and the last release was not even two months ago.
+The release frequency seemed to have slowed down, though.
+
+=== GitHub Activity
+
+Just like Postman, as a closed-source project Kreya does not have a GitHub repository that could be used to track project activity reliably.
+However, there is the repository link:https://github.com/riok/Kreya[riok/Kreya] which is used for bug reports and feature requests, similar to Postman.
+
+GitHub star ratings as well as the general buzz in the discussions suggest that Kreya is not very popular:
+
+link:https://star-history.com/#riok/Kreya&Date[{{< figure src="/images/posts/api-clients-what-happened-next/star-history-kreya.png" alt="GitHub star history for riok/Kreya" >}}]
+
+Honestly, I think this is a bit sad because I find Kreya to be a very promising and reliable tool.
+
+Within the last two weeks, there were 2 new issues reported in the repository, and both have received feedback from the developers who confirm they will address them.
+
+[[httpiness]]
+== httpiness
+
+In link:https://4ndrs.xyz/posts/web-api-clients/#httpiness[my previous article], I liked the idea of link:https://httpiness.com[httpiness], but I was not able to get it to work as I would need it because of a bug.
+So I am curious about the recent developments. Maybe there is a new version that fixes the bug?
+
+For httpiness, it is really hard to say anything about activity.
+Their link:https://medium.com/@httpiness[blog on medium.com] has only 3 articles (and also no more than 5 followers).
+All of them were published in May or June 2022.
+
+Also their link:https://twitter.com/httpinessclient[Twitter/X feed] does not exactly show any recent activity.
+It looks like the entire project was most active in mid of last year.
+
+In January of this year, at least the (most likely) previous link:https://twitter.com/httpinessclient/status/1613597858350989318[version v1.3 of the app was announced].
+The most recent version(s) must have appeared somewhat silently (current version at this date is v1.4.2).
+
+All together, the project does not seem to be very active, and it is hard to tell whether it is still alive or not.
+I tend to believe it has been abandoned, also as I cannot find any information about the developers or the company behind it.
+
+[[acr]]
+== Advanced REST Client by MuleSoft
+
+As far as features are concerned, MuleSoft's link:https://advancedrestclient.com[Advanced REST Client] looked interesting but showed a poor performance when I gave it a try.
+
+Did that change in any way recently?
+
+=== Recent Releases
+
+Nope, not at all.
+The last link:https://github.com/advanced-rest-client/arc-electron/releases[release] v17.0.9 dates back to March 2022.
+
+=== GitHub Activity
+
+Even though the repository's only active branch is a branch that was created automatically by Dependabot, the GitHub star rating is still on a linear rise:
+
+link:https://star-history.com/#advanced-rest-client/arc-electron&Date[{{< figure src="/images/posts/api-clients-what-happened-next/star-history-arc.png" alt="GitHub star history for advanced-rest-client/arc-electron" >}}]
+
+Looking at the issues, there also is not much going on.
+The most recent one was opened two weeks ago, link:https://github.com/advanced-rest-client/arc-electron/issues/509[asking whether the project is still alive].
+So far, there does not seem to be an "official" reply.
+
+The only other active issue within the last month was automatically closed as stale due to inactivity.
+
+Also the link:https://install.advancedrestclient.com/home[webpage] was not updated for a year now.
+I think it is same to assume the project is abandoned.
+
+[[milkman]]
+== Milkman
+
+link:https://milkman.dev/[Milkman] is the API client I came across last in my previous research, and I was not really excited or overwhelmed by it.
+
+However, I am happy to see that there is some direct reaction to the recent changes in Insomnia, in particular.
+In fact, Milkman is directly targeting Insomnia users that are looking for an alternative in a message in the link:https://github.com/warmuuh/milkman[repository README on GitHub] now:
+
+> Hello Insomnia Users 👋. Recently, a way to import insomnia data was added due to the latest changes on insomnia. Rest assured that the restriction of having an account in Postman (and now, Insomnia) was one of the main reasons to create Milkman and such a thing will never ever happen.
+
+So, the maintainers are aware of the situation.
+How do they react to it?
+
+=== Recent Releases
+
+At first sight, the project looks pretty inactive with the link:https://github.com/warmuuh/milkman/releases/tag/5.6.0[last version] being released back in March.
+
+However, a new version is in development, and will include a feature to import Insomnia collections.
+A link:https://github.com/warmuuh/milkman/releases/tag/nightly[nightly build] is already available to be used.
+
+=== GitHub Activity
+
+The ability to import Insomnia collections was link:https://github.com/warmuuh/milkman/issues/181[requested and implemented] two weeks ago, so pretty much right after the changes in Insomnia were introduced.
+
+Besides that, not much was going on in the repository.
+GitHub stars are on a rise for Milkman as well, though:
+
+link:https://star-history.com/#milkman-rest/milkman&Date[{{< figure src="/images/posts/api-clients-what-happened-next/star-history-milkman.png" alt="GitHub star history for milkman-rest/milkman" >}}]
+
+[[hoppscotch]]
+== Hoppscotch
+
+link:https://hoppscotch.com[Hoppscotch] used to look like an old Postman, and it still does.
+Except for some missing pieces that some users probably will not miss, it is a viable API client.
+
+So what happened in the last couple of weeks?
+
+=== Recent Releases
+
+Hoppscotch has new link:https://github.com/hoppscotch/hoppscotch/releases[releases] approximately once a month recently.
+
+The release of link:https://github.com/hoppscotch/hoppscotch/releases/tag/2023.8.2[version 2023.8.2] on October 14, 2023, is the first release since the changes in Insomnia were introduced overnights.
+The release features some major bug fixes, refactors, updated localisations and some small UI tweaks.
+
+Essentially, it is a typical maintenance release and does not seem to be impacted by or related to the recent changes in Insomnia and Postman.
+
+They are just mind their own business.
+
+=== GitHub Activity
+
+Looking at the link:https://github.com/hoppscotch/hoppscotch/issues[GitHub Issues] you get the same impression.
+There are a couple of bug reports and feature requests but none of them seem to be inspired by Postman or Insomnia, i.e., being related to people's migration from one of the two tools to Hoppscotch.
+
+An interesting bug report refers to a link:https://github.com/hoppscotch/hoppscotch/issues/3422[missing possibility to configure OAuth 2.0 authentication]. Some options are missing, turning the feature into something not usable.
+The issue was raised for days ago, and it did not receive any feedback or reaction so far.
+
+That is also the general impression I get from looking at the conversations in the repository: 22 issues were raised within the last two weeks. Only 8 of them have actually received any reaction.
+In about half of the cases, the reaction was questions to get assigned because people wanted to work on the issues, in most cases without any further reaction from the maintainers.
+
+Nevertheless, the GitHub star rating is astonishing. It basically skyrocketed over since the beginning and probably still is.
+For some reason, there was not too much data  recently:
+
+link:https://star-history.com/#hoppscotch/hoppscotch&Date[{{< figure src="/images/posts/api-clients-what-happened-next/star-history-hoppscotch.png" alt="GitHub star history for hoppscotch/hoppscotch" >}}]
+
+Over the last month, 13 authors have contributed to the repository, and there were 2 releases.
+
+[[firecamp]]
+== Firecamp
+
+link:https://firecamp.io/[Firecamp] was requesting me to log in for basically everything I wanted to do in the app.
+Therefore, it was not really an option for me.
+However, whether there is some indication of former Postman and Insomnia users migrating to Firecamp, resulting in some kind of buzz, is still interesting to see, especially since they describe themselves as "vscode for apis, open-source postman/insomnia alternative".
+Do they show any reaction to recent events?
+
+=== Recent Releases
+
+As far as link:https://github.com/firecamp-dev/firecamp/releases[releases] are concerned, there is not much to tell.
+
+There is a total of 5 releases available on GitHub, the link:https://github.com/firecamp-dev/firecamp/releases/tag/3.0.0[first one] dates back to July 11.
+The most recent is version link:https://github.com/firecamp-dev/firecamp/releases/tag/v3.2.2[v3.2.2] from August 21, 2023.
+
+Since then, nothing more happened, i.e., no new version was released.
+
+=== GitHub Activity
+
+The majority of link:https://github.com/firecamp-dev/firecamp/issues[recent issues] was opened by the maintainer of Firecamp himself.
+Firecamp is participating in link:https://hacktoberfest.com/[Hacktoberfest] and is looking for contributors for some UI enhancements and bugfixes.
+
+The most recent feature request targets compatibility with Postman: They want to build a link:https://github.com/firecamp-dev/firecamp/issues/106[fully compatible Echo Server].
+It is intended to provide the same endpoints and functionality as Postman's Echo Server so that they can maintain the highest level of compatibility for those users who are coming from the Postman background.
+
+Another recent issue is a link:https://github.com/firecamp-dev/firecamp/issues/109[call to star the repository] (opened four days ago).
+This is a bit strange, actually, and it does not seem to have had any significant effect so far:
+
+link:https://star-history.com/#firecamp-dev/firecamp&Date[{{< figure src="/images/posts/api-clients-what-happened-next/star-history-firecamp.png" alt="GitHub star history for firecamp-dev/firecamp" >}}]
+
+However, towards the end of the year, a link:https://github.com/firecamp-dev/firecamp/issues/62[new desktop application] shall be released.
+
+[[testfully]]
+== Testfully
+
+I believe link:https://testfully.io/[Testfully] got a boost from Postman's deprecation of scratch pad.
+link:https://testfully.io/blog/testfully-offline/[Testfully Offline was announced in their blog] as a Postman Scratch Pad alternative in
+beginning of August, even before the changes in Insomnia were introduced and before Postman eventually got rid of the offline functionality.
+
+=== Recent Releases
+
+Unfortunately, it is a quite hard to get a good impression of recent release activity in the project.
+
+According to the link:https://testfully.io/changelog/[changelog], there should be some changes that are all in some way related to the import of Insomnia and Postman data.
+In addition to that, there should be an import and export functionality now since October 8, 2023.
+
+However, the latest version on the link:https://testfully.io/blog/testfully-desktop-app/[download page] is
+the same version that I installed for link:https://4ndrs.xyz/posts/web-api-clients/#testfully[my last article on the topic]: version 1.69.0 (20230917.232057).
+Based on the build number, I assume the following features listed in the changelog would still be missing:
+
+- Import a Postman backup (dump) file
+- Import Postman Environments
+- Export Testfully Offline Workspace Data
+
+I can for sure say, the export functionality is not available in the version I have installed because this is something I really wanted to use and could not find when I gave Testfully a try.
+I first thought the features might be available in Testfully Cloud but that would not make much sense for the export of offline data.
+
+[[httpie]]
+== HTTPie
+
+In link:https://4ndrs.xyz/posts/web-api-clients/#httpie[my last article], I found link:https://httpie.io/[HTTPie] is a really simple API client that reached its limits pretty quickly.
+So I actually put it aside fairly quickly as well.
+
+Now, I am coming back to see if things have changed recently.
+
+=== Recent Releases
+
+First of all looking at the link:https://github.com/httpie/desktop/releases[recent releases], I see link:https://github.com/httpie/desktop/releases/tag/v2023.3.6[one from October 8, 2023]. It mainly comes with stability improvements and minor bugfixes.
+
+One of the fix, actually ensures the app can be started at all again since there was an infinite spinner before in some cases.
+
+What I did not notice before, but what actually is a feature of the entire 2023.3.x series, is the option to have recursive variables:
+Variables can be defined in a way that they are evaluated recursively, i.e., they can reference other variables.
+Previously, I have only noticed that feature in Insomnia, and I liked it a lot.
+
+However, besides that there did not change much.
+
+=== GitHub Activity
+
+Over the last month, there was almost no activity on GitHub.
+There was not a single commit. This is no surprise, though, since the source code does not live in the link:https://github.com/httpie/desktop[GitHub repository].
+
+So the most interesting things are the converations in the link:https://github.com/httpie/desktop/issues[GitHub Issues].
+11 open issues were raised within the last two weeks.
+Among these are several interesting feature requests that could be inspired from other API clients out there, as all of them already exist in one or the other:
+
+- link:https://github.com/httpie/desktop/issues/122[Support for path parameters]
+- link:https://github.com/httpie/desktop/issues/119[Support for multiple authentication mechanisms in a single request]
+- link:https://github.com/httpie/desktop/issues/115[Support for OAuth]
+
+However, there is not much going on in these discussions.
+They rarely have any comments in general.
+
+Given that, I am truly surprised by the recent rise in GitHub star ratings:
+
+link:https://star-history.com/#httpie/desktop&Date[{{< figure src="/images/posts/api-clients-what-happened-next/star-history-httpie.png" alt="GitHub star history for httpie/desktop" >}}]
+
+To be honest, HTTPie is the first API client that actually shows the development of GitHub star ratings I was expecting to see for other tools as well.
+
+[[bruno]]
+== Bruno
+
+Next on the list is link:https://www.usebruno.com/[Bruno].
+In the link:https://4ndrs.xyz/posts/web-api-clients/#bruno[previous article], I concluded Bruno is very ambitious but also quite far away from being a viable alternative as an API client for all the daily work.
+
+A couple of days ago, I then read about link:https://www.linkedin.com/posts/anoop-m-d-868099100_exciting-news-bruno-has-hit-5000-github-activity-7117524712120872961-wb5F?utm_source=share&utm_medium=member_desktop[its crazy increase in popularity on LinkedIn].
+That made me curious about what happened recently, and I wanted to check out the latest developments.
+
+=== Recent Releases
+
+The link:https://github.com/usebruno/bruno/releases[release history] is impressive:
+The version I last looked at was link:https://github.com/usebruno/bruno/releases/tag/v0.16.4[v0.16.4], and the most recent version is link:https://github.com/usebruno/bruno/releases/tag/v0.24.0[v0.24.0].
+
+This means there is a new release approximately every second day, and most of them are actual feature releases, not just bugfixes.
+So let us quickly summarize some of the main features that were added over the last two weeks:
+
+- Collection sorting
+- Code generator
+- Bearer and Basic authentication
+- Cloning of environments
+- File system access in scripts
+- Authentication for GraphQL requests
+- Support for Bearer and Basic authentication in the import from Insomnia
+- Comments in JSON bodies
+- TCP proxy tunneling
+- Collection-level headers, authentication, scripts, and tests
+- Support for SPARQL bodies
+- Secrets management to prevent sensitive information from getting checked into source control
+
+In addition to that, there were also a couple of bugfixes and improvements, e.g., regarding the UI.
+
+=== GitHub Activity
+
+Given that impressive release history, it is no surprise that there is a lot of activity on GitHub as well.
+I already mentioned the crazy increase in GitHub star ratings:
+
+link:https://star-history.com/#usebruno/bruno&Date[{{< figure src="/images/posts/api-clients-what-happened-next/star-history-bruno.png" alt="GitHub star history for usebruno/bruno" >}}]
+
+Over the last month, 47 authors contributed to Bruno. That resulted in a total of 22 releases.
+Right now, there are 31 open pull requests, 98 pull requests were merged in the period.
+79 issues were closed, and 159 new issues got opened.
+
+Funnily, there is a feature request for link:https://github.com/usebruno/bruno/issues/562[automatic updates], something that Postman users want to get rid of.
+On a more serious note, there are also requests for features already known from other API clients or also some quite unique features as far as I can tell:
+
+- link:https://github.com/usebruno/bruno/issues/454[Using secrets from Azure Key Vaults]
+- link:https://github.com/usebruno/bruno/issues/425[Setting base URLs at collection level or folder level]
+- link:https://github.com/usebruno/bruno/issues/392[Client certificate authentication]
+- link:https://github.com/usebruno/bruno/issues/344[Defining possible values for query parameters]
+- link:https://github.com/usebruno/bruno/issues/292[Nested environments]
+- link:https://github.com/usebruno/bruno/issues/235[Request preview]
+
+On the other hand, there is also a bug report for link:https://github.com/usebruno/bruno/issues/553[variables not working in the request body].
+Another issue relates to the link:https://github.com/usebruno/bruno/issues/472[import of variables from Insomnia].
+
+By the way, people are also expressing their hope link:https://github.com/usebruno/bruno/issues/228[that Bruno will not do the same mistake as Insomnia did].
+This was also clearly addressed by the author of Bruno in a discussion on GitHub: link:https://github.com/usebruno/bruno/discussions/269[Bruno - Opensource, Sustainability, Privacy, Freedom and Incentives].
+In particular, cloud sync or mandatory user accounts are off the table, but a special paid version for supporters is under consideration.
+
+[[soapui]]
+== SoapUI Open Source by SmartBear
+
+Honestly, I looked at link:https://www.soapui.org/[SoapUI] mostly out of curiosity last time, and I am coming back to it for the same reason again -- without any expectations, actually.
+
+=== Recent Releases
+
+As the link:https://github.com/SmartBear/soapui/releases[GitHub Release] page indicates, there is about one release per year.
+
+The last release was link:https://github.com/SmartBear/soapui/blob/release-5.7.1/RELEASENOTES.txt[version 5.7.1] from August 1, 2023, and compared to link:https://github.com/SmartBear/soapui/blob/release-5.7.0/RELEASENOTES.txt[version 5.7.0] (January 12, 2022) it contained only a single fix: The app could not be installed on macOS after an update of the operating system.
+
+=== GitHub Activity
+
+Activity on GitHub is summarized very quickly: There is almost none.
+Over the last month there has been a total of 2 commits by two GitHub users, one of them being a bot (which was actually configured during that time period).
+
+link:https://github.com/SmartBear/soapui/issues/765[One issue regarding a broken link in the README] was closed -- by the author, after half a year because nobody reacted to it.
+It was then reopened by the same person again.
+
+That activity alone is two thirds of all issue-related activity on GitHub.
+The last portion is another issue that was opened
+four days ago (by the same person who closed and opened the others).
+That was all.
+
+Nevertheless, GitHub star ratings are rising just like for all the other tools:
+
+link:https://star-history.com/#SmartBear/soapui&Date[{{< figure src="/images/posts/api-clients-what-happened-next/star-history-soapui.png" alt="GitHub star history for SmartBear/soapui" >}}]
+
+[[star-ratings]]
+== A Word on GitHub Star Ratings
+
+I am not sure how much the GitHub star ratings actually tell about the popularity of a project.
+
+All star ratings I looked at in this article are on a rise.
+At the same time, they are at very different levels.
+
+link:https://star-history.com/#postmanlabs/postman-app-support&Kong/insomnia&ArchGPT/insomnium&riok/Kreya&advanced-rest-client/arc-electron&warmuuh/milkman&hoppscotch/hoppscotch&firecamp-dev/firecamp&httpie/desktop&usebruno/bruno&SmartBear/soapui&Date[{{< figure src="/images/posts/api-clients-what-happened-next/star-history-comparison.png" alt="GitHub star history for all projects compared" >}}]
+
+Looking at the diagram, it is really hard to spot any differences between the newer rising projects because the scale is so different.
+In the following diagram, the top 3 (Hoppscotch, Insomnia, Postman) are removed:
+
+link:https://star-history.com/#ArchGPT/insomnium&riok/Kreya&advanced-rest-client/arc-electron&warmuuh/milkman&firecamp-dev/firecamp&httpie/desktop&usebruno/bruno&SmartBear/soapui&Date[{{< figure src="/images/posts/api-clients-what-happened-next/star-history-comparison2.png" alt="GitHub star history for all projects with lower ratings compared" >}}]
+
+The difference is now more visible.
+In relative numbers, Advanced REST Client is more on a rise than SoapUI, Milkman, or Kreya (which are all on a similar rise), and Bruno outperforms them all.
+
+Personally, I have a hard time relating that to my subjective impression of the projects and their quality.
+The best example might be SoapUI: It is on a steady rise since 2016, but it had only 4 releases in that time.
+It is not really a tool I would consider using.
+
+On the contrary, there is Hoppscotch with an almost insanely high star rating, almost twice as high as Insomnia's rating which is second in the comparison.
+However, I am not sure whether I would consider Hoppscotch to be a (so much) better tool than Insomnia, for example.
+
+Similarly, HTTPie shows some enormous increase in GitHub stars recently, which really puzzles me as I do not see any obvious reason for that given the still existing lack of features and the minimal activity in the corresponding repository.
+I am really not sure what people are expecting when starring it.
+
+For Bruno, things are more clear:
+The increase in GitHub stars is both crazy and well deserved, as there really is a lot going on since both Postman and Insomnia made their users unhappy.
+
+[[conclusion]]
+== Conclusion
+
+After looking at the recent developments with the various tools out there, I am happy to see that there is a lot of activity going on.
+
+=== Ready-to-Use API Clients
+
+Insomnium is a quite promising project.
+Particularly after a significant effort to migrate from Postman to Insomnia, Insomnium probably is the top-alternative:
+It comes with zero migration effort as it still is a fully compatible drop-in replacement for the "old" Insomnia with all its features.
+The risk, however, is that the project still has to prove its sustainability as a freshly started project.
+Maybe this gives some hope and trust, acting as a role model:
+Bruno also started as a one-person show, already years ago, and look how it is doing now.
+
+Kreya does not seem to be very popular, and there is not too much going on.
+Nevertheless, my impression is the project is mature and stable, and it is perfectly fine as a replacement of Postman and Insomnia if needed.
+So I will definitely give it a try in daily work to get a better feeling for it.
+
+=== API Clients on the Rise
+
+Milkman is aware of the situation and is actively targeting Insomnia users.
+So it might be worth a look as well.
+
+In a similar way, Firecamp is targeting Postman users and aims for higher compatibility to ease the migration for former Postman users.
+Since they might be used to having to log in to fully use the app, Firecamp might turn out to be a good alternative for them.
+
+Also Testfully is doing some effort to welcome Postman and Insomnia users by providing and improving the import functionality.
+Currently, the exact status there is not clear to me, though.
+
+However, even they showed some kind of reaction to the recent changes in Postman and Insomnia, I am not sure whether any of these tools will be able to gain significant momentum.
+At least, they are progressing with a slower pace.
+
+Bruno seems to be the exception here.
+It gained a lot of momentum recently: There is an active community, and the maintainer is very active as well.
+The project is evolving with an impressive speed, and it is definitely worth a look, although it started with a quite limited feature set.
+So it comes with a lot of potential, but it is not yet a viable alternative to other more mature projects, I guess.
+
+Still Bruno got all the feature requests I did not see for any of the other tools.
+So maybe, Bruno is the API client, the community has been waiting for, and is now trying to shape it into the perfect tool.
+
+=== The Unclear Case
+
+Hoppscotch puzzles me a bit:
+It seems to be extremely popular as far as GitHub star ratings are concerned but on the other hand, the maintainers do not seem to be as active as one would like them to be when it comes to support.
+In particular, no reaction at all to a significant bug regarding OAuth authentication for several days is not a good sign.
+
+=== API Clients on the Decline
+
+httpiness and Advanced REST Client seem to be tools not worth looking at anymore.
+Although I especially like the concept of httpiness, I do not think there is much to expect.
+So it might be okay to give it a try but if it does not work out, it is probably better to move on sooner than later.
+Similarly, if you are using Advanced REST Client and got used to it, it is probably fine, but if you struggle with it, do not challenge yourself too much. It might not be worth it.
+
+And then there is SoapUI.
+I am not sure what to think about it, actually.
+I wonder who is still using it, and why.
+Compared to all the other API clients, it looks like a dinosaur, but it still is not dead.
+On the other hand, it is not really alive either.
+Is it a good idea to invest time in it, and consider migrating to it? I do not think so.
