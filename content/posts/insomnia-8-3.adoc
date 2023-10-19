@@ -1,0 +1,101 @@
+---
+title: "Insomnia v8.3 - All good again?"
+date: 2023-10-19T10:58:57+02:00
+draft: false
+description: "Insomnia 8.3.0: A Return to Local Storage. Some thoughts on the latest release from Kong, and whether the search for an alternative API client is over."
+categories:
+- API
+- Testing
+- Tools
+tags:
+- api
+- apiclient
+- insomnia
+- test
+series:
+- API Clients
+---
+
+Kong just released a new version of link:https://insomnia.rest[Insomnia]:
+link:https://insomnia.rest/changelog#8.3.0[Version 8.3.0] is a huge step back towards where Insomnia originally came from.
+
+This may sound a bit weird at first, but it actually is good news. As Marco Palladino, CTO and co-founder of Kong, admitted in a link:https://konghq.com/blog/product-releases/insomnia-8-3[recent blog post],
+going all for cloud sync was a mistake:
+
+> We’re going to continue to work to make this right for the Insomnia community.
+>
+> This whole experience highlighted some misunderstandings on my part that led to the 8.x changes — and it’s been a huge learning opportunity for me.
+>
+> We learned after releasing Insomnia 8.0 that for many users using cloud storage for projects (encrypted or not) is simply not an option.
+>
+> I now understand the importance of having a local-only storage option for projects that for one reason or another cannot be moved to the cloud, and I’m fully leaning into local storage as one of the three storage backends we will support in the future.
+
+First of all, I am really happy that Kong is listening to the community and is willing to change course if necessary.
+This is something I did not see happening with Postman, for example.
+In fact, I am not even aware of any (public or official) reaction to complaints and feedback at all, besides the "Use the new lightweight API client instead" message.
+
+On the other hand, and to be fair, Postman did their change in a different manner, and they gave the community a lot of time to prepare for the change.
+So Insomnia users, in my mind, had every right to be upset about the sudden change that came overnight.
+It actually was even worse: When they opened Insomnia after the upgrade to version 8.0 all data seemed to have gone. At this point, one could argue what was worse, Postman's "Congrats, everything is synced to our cloud now!" or Insomnia's "Let's have a fresh start!".
+
+Now after upgrading to version 8.3.0, everything seems to be back where I left off.
+
+I had not created a user account before, and instead used to import and delete the collections I needed to work with into the Scratchpad that could be used as a local workspace prior to upgrading the latest version.
+
+With version 8.3.0, all my different workspaces and collections are back, so I can continue working with Insomnia as I did before with the pre-8 version.
+This is quite nice.
+And, what is even better, is that everything defaults to local:
+All projects or workspaces that already exist are considered local workspaces, and they only get synced to the cloud if you explicitly choose to do so.
+So it really is as before, with the exception that using Insomnia now requires a user account.
+
+== What is the user account for?
+
+First of all, when you create an account, you will have to set a passphrase for end-to-end encryption of your data.
+By the way, it will not be used for login. You will receive a login code via email each time you want to log in, unless you use Single Sign-On (SSO) with GitHub or Google instead.
+Secondly, you choose your subscription plan and enter your payment details if needed.
+Then, you can add a profile picture, and add LinkedIn, Twitter and GitHub profiles.
+Or you have the option to _unsubscribe_ from the Insomnia newsletter.
+
+You can also create and manage organizations, or invite collaborators.
+With the link:https://insomnia.rest/pricing[Free plan], you are limited to the "Personal workspace" organization, though, but still can invite collaborators.
+
+From my point of view, as a user who wants and has to work purely offline, the account is only needed to manage the subscription plan.
+Everything else is sort of useless.
+Nevertheless, I will not complain about it, I also have a JetBrains account to use IntelliJ IDEA, which I only use to manage my license, and everything else is local.
+I just got a bit link:https://4ndrs.xyz/posts/web-api-clients/#firecamp[upset with Firecamp], which required an account for nearly every action in the app, e.g., accessing the application settings or creating a request. This is where the fun ends!
+
+== Am I good now?
+
+Well, it depends.
+
+Yes, all my projects and collections are back, and I can continue using them as I used to before.
+On the other hand, the built-in Git Sync feature is not available anymore since it requires at least the link:https://insomnia.rest/pricing[Team plan] now, for which Kong is currently charging 12 dollars per user per month.
+
+However, I do not want to discuss the pricing here.
+All I am saying is, you might be thinking twice before upgrading to a this paid plan, if all you want is to sync your collections with Git.
+
+I cannot tell if the Git sync changed in version 8.3.0, as I am only using a Free plan subscription, but I assume it is still the same as before, and this Git integration was using a sort of internal representation of the Git repository.
+I believe this is due to the way Insomnia is storing data locally in a database instead of using files on the disk, and I cannot image the entire local data handling was changed in such a short period of time.
+
+With that kind of Git integration, it unfortunately was not possible to configure encryption via Git-Crypt, for instance, which is a requirement for storing credentials in a repository even.
+For this reason, we could and did not use Git Sync.
+We had to use the good old export-commit-push-pull-import workflow instead, and we still (or rather again) do so with the new version of Insomnia.
+
+With that in mind, I do not think, the paid plans provide any value for me, personally, or for our team.
+
+So let us think a bit further, and take the link:https://4ndrs.xyz/posts/web-api-clients/[potential alternatives] and link:https://4ndrs.xyz/posts/web-api-clients-whats-next/[recent developments] into account as well:
+
+Actually, with the release of version 8.3.0, from an end-user perspective, Insomnia went back to the point where it was before the 8.0 release, and that is the very point where https://github.com/ArchGPT/insomnium[Insomnium] was started as a fork.
+So Insomnia and Insomnium could be considered as equal again, and the only difference is the name.
+However, in fact, Insomnium has already moved on since then. With segment parameters (path parameters), it includes a feature that still requires extra plugins in Insomnia, and Insomnia apparently includes some user tracking features that were also removed in Insomnium.
+
+If the user account and online functionality from Insomnia is not used at all, Insomnium might be a very viable alternative.
+
+Other alternatives, like https://www.usebruno.com/[Bruno] and https://kreya.app/[Kreya], treat local data as first-class citizens, and store them as files on the disk by default, i.e., without having to export the data first.
+So these tools allow for a much better integration with Git.
+Working with the API client then is just like working with any other tool or editor.
+Hence, such workflows might be more user-friendly than the constant exports and imports we probably all got used to with Postman and also Insomnia.
+
+Having got used to that workflow does not mean, we love it so much we cannot imagine to wor differently at some point.
+Therefore, dropping Insomnia might still be an option on the table.
+That Pandora's box has been opened, and it might be hard to close it again.
