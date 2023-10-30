@@ -1,0 +1,224 @@
+---
+title: "Another Two Weeks Later: What's the API Client World up to?"
+date: 2023-10-30T16:14:25+01:00
+draft: false
+description: "Another exploration of the latest state of various API clients to conclude if they are worth using and viable alternatives to Postman and maybe Insomnia, featuring Insomnium, Bruno, Hoppscotch, Testfully, Milkman, httpiness, and Kreya."
+slug: "web-api-clients-whats-next-again"
+categories:
+- API
+- Testing
+- Tools
+tags:
+- api
+- apiclient
+- insomnia
+- insomnium
+- bruno
+- hoppscotch
+- testfully
+- milkman
+- httpiness
+- kreya
+---
+
+Two weeks ago, I revisited all the API clients I found and checked out before to see in which way they evolved since Postman and Insomnia went all in on cloud sync.
+In the meantime, Insomnia already stepped back from that decision, and by now only requires a user account to be used as before.
+
+Last time, I already noticed that some of the API clients seem abandoned, or at least there was not much activity. So I will not look at them all that closely again.
+Instead, I will focus on some that seem most interesting to me with specific questions in mind.
+
+- <<insomnia>>
+- <<insomnium>>
+- <<bruno>>
+- <<hoppscotch>>
+- <<testfully>>
+- <<milkman>>
+- <<httpiness>>
+- <<reasoning>>
+
+[[insomnia]]
+== Is there some new back-and-forth for Insomnia?
+
+The last version of link:https://insomnia.rest[Insomnia] that has been released is version 8.3 which brought back link:https://4ndrs.xyz/posts/insomnia-8-3/[local projects].
+
+Personally, I can say I am happily using Insomnia without any issues.
+Sure, there are some interesting alternatives, but just continuing to use Insomnia is very easy as it does not require any migration.
+
+[[insomnium]]
+== How is Insomnium doing?
+
+In the past month, 7 people have contributed to link:https://github.com/ArchGPT/insomnium[Insomnium].
+This means the number of contributors is increasing.
+
+Recent changes mostly address bugs, and Git Sync has been brought back.
+
+And, recently raised link:https://github.com/ArchGPT/insomnium/issues[issues] relate to environments.
+According to the maintainer, link:https://github.com/ArchGPT/insomnium/issues/55#issuecomment-1764640186[the environment module inherited from Insomnia is quite buggy] and will be replaced with a new one in Insomnium version 0.3.
+
+[[bruno]]
+== Can Bruno keep its recent pace?
+
+Two weeks ago, I was truly impressed by the pace of development of link:https://www.usebruno.com/[Bruno].
+A new release was published every second day.
+That is quite impressive, and I am curious if that pace is sustainable and can be kept up.
+
+At the time of my link:https://4ndrs.xyz/posts/web-api-clients-whats-next/[last post], the latest version was link:https://github.com/usebruno/bruno/releases/tag/v0.24.0[v0.24.0].
+Today, the latest version was released 6 days ago: link:https://github.com/usebruno/bruno/releases/tag/v0.27.2[v0.27.2].
+So there is still a lot going on.
+
+Newly added features include support for client certificate authentication (yay!), configurable request timeouts, support for pre-request and post-request scripts from Postman collections, a beta of OpenAPI v3 import, and Insomnia YAML import.
+
+So, yes, the pace is still high, and there are a lot of new features.
+Bruno is definitely coming along nicely.
+Interestingly, support for client certificates (link:https://4ndrs.xyz/posts/web-api-clients/[which was really hard to find]) became available before support for OAuth authentication.
+By now, that actually might be the only missing important feature.
+
+[[hoppscotch]]
+== Does Hoppscotch still not allow setting the OAuth grant type? Is there anything new besides that?
+
+link:https://hoppscotch.com/[Hoppscotch] seems to be extremely popular as far as GitHub star ratings are concerned.
+I had issues wrapping my head around that as I was actually a bit disappointed, most of all because OAuth authentication actually cannot work as it is not possible to set a grant type for token requests.
+Has that been fixed?
+
+No. Hoppscotch did not have a new release within the last two weeks.
+link:https://github.com/hoppscotch/hoppscotch/releases/tag/2023.8.2[Version 2023.8.2] on October 14, 2023, is still the latest version.
+Hence, it is still not possible to set an OAuth grant type.
+
+Besides that, a couple of new link:https://github.com/hoppscotch/hoppscotch/issues[issues] have been reported, and very rarely received feeback from the Hoppscotch team.
+As far as I can tell, basically the only "reaction" was assigning issues to community members who volunteered to work on the issues.
+
+Interestingly, there seems to be something going on regarding the desktop client.
+There was at least link:https://www.linkedin.com/posts/hoppscotch_weve-been-working-on-something-big-the-activity-7123311680083656706-NOxC?utm_source=share&utm_medium=member_desktop[kind of an announcement on LinkedIn].
+So far, nothing else, though.
+
+[[testfully]]
+== How is the Postman and Insomnia import in Testfully doing?
+
+Two weeks ago, I was confused: There should be an option to import collections and environments from Postman and Insomnia, but I could not find a new version of link:https://testfully.io/[Testfully] to download.
+
+It turns out, I am still confused because I was now able to import collections from Postman and also Insomnia (only JSON, not YAML format), and things seem to work fine.
+
+There also is an option to export collections and folders (now?).
+Particularly nice is the ability to run the export from any level of the collection hierarchy.
+The resulting JSON file is not so nice, though.
+It looks quite similar to Insomnia's all-in-one JSON file.
+
+[[milkman]]
+== Is there a new release for Milkman? How is the Insomnia import coming along?
+
+The developer of link:https://milkman.dev/[Milkman] was working on an Insomnia import recently. Two weeks ago, that feature was only available in a nightly build.
+
+Since then, nothing has changed.
+There really is not much going on, only one person, the author himself, is working on Milkman over the last month.
+
+[[httpiness]]
+== Is there a new version for httpiness (and is OAuth working now)?
+
+As mentioned before, I like the general idea and concept of link:https://httpiness.com[httpiness] and would like to use it for one or the other use case.
+Unfortunately, I noticed that OAuth authentication was not working as expected in version 1.4.2, so I could not use it like I wanted to.
+
+There still is no new version. Nothing changed. Too bad.
+
+[[reasoning]]
+== What should I use now?
+
+This is a tough question.
+The answer is: It depends.
+First of all, it all depends on your use cases, requirements and priorities.
+
+In my opinion, it is safe to say that nobody has to cry after Postman. There are multiple viable alternatives.
+
+=== Insomnia?
+
+Alternative number one could still be Insomnia.
+It has everything I need, at least after installing one or the other plugin.
+Advantage of Insomnia might be that, with Kong, there is a larger company behind it.
+It has a grown community that made itself be heard when the cloud sync decision was made overnight, and Kong's CTO reacted to it quite appropriately.
+Therefore, I am quite confident that they will not make such a decision or mistake again. I really hope I am not proven wrong once again.
+
+=== Insomnium?
+
+On the other hand, there is Insomnium that inherited a lot from Insomnia, so it is capable of everything you can do with Insomnia, which is probably all you need.
+The contributing community seems to grow, and the focus seems to be on fixing bugs and improving the existing feature set. This includes rewriting some modules here and there.
+And some functionality that previously required a plugin became built-in functionality already.
+
+So both, Insomnia and Insomnium, are good options, I guess.
+Personally, I find myself using Insomnia and Insomnium in parallel.
+
+Honestly, this is mostly out of laziness:
+I did not take the time to fully import everything into Insomnium, and with Insomnia v8.3 all projects were back and became usable again so that I did not have to fully migrate all workspaces and projects.
+
+With an eye on the roadmap and the already integrated functionality, Insomnium might be on its way to become the better tool, actually.
+
+=== Testfully?
+
+Testfully actually seems to be quite fine.
+As I most of the time do not depend on client certificate authentication, I could use it.
+
+However, the focus clearly is on API testing which is not my main use case so that it can do a lot I do not need.
+
+Also, it has some minor shortcomings that become apparent when using it in my daily work. That combined does not make it the perfect fit for me.
+
+=== Kreya?
+
+From the moment I first opened it, I liked Kreya a lot.
+Nevertheless, I did not use it a lot because it requires a bit of additional configuration effort:
+
+It cannot import Insomnia or Postman collections. Instead, everything needs to be configured from scratch based on OpenAPI spec files (or folders and operations need to be created manually).
+
+Also, environment variables need to be converted if the keys contain invalid characters like `-`, and authentication needs to be configured manually before things can get started.
+
+So, it is not a tool that can be used right away with an existing (grown) project.
+
+The API spec importer still seems to be a nice feature, and if I was to start a new project, I would definitely give Kreya a try.
+
+=== Bruno?
+
+I have to admit I uninstalled Bruno after my very first impression.
+Too much was missing back then, and I could not imagine that it would be possible to catch up with the other tools in a reasonable amount of time.
+
+I was proven wrong, though.
+
+Still, OAuth authentication is not yet available, which is a showstopper for me.
+However, the contributors seem to be very active, and the tool is evolving quickly.
+So I will keep an eye on it, and it probably will not take too long until all the missing features are available.
+
+With the ability to import data from Postman and Insomnia, Bruno is definitely a viable alternative that could be used right away with too much migration effort.
+
+It is just not there yet, but not too far away from it either.
+
+=== Hoppscotch?
+
+To be honest, I am not sure what to think about Hoppscotch.
+I do not know where the insane amount of GitHub stars come from.
+Based on that, I think Hoppscotch is over-hyped.
+
+With still no desktop app yet, no OAuth grant type selection, and the lack of actual feedback from the Hoppscotch team, I do not feel comfortable using it.
+
+I think I will keep looking at it every once in a while, but I do not expect it to become my tool of choice anytime soon.
+There are way better or more promising alternatives out there.
+
+=== Milkman?
+
+Hmm... Milkman.
+First of all, the UI and UX do not convince me.
+Also, most likely due to the lack of an actual user community, development does not seem to progress as fast as one would wish, and it has way too many flaws to be an actual alternative.
+
+The worst thing is probably the implementation of OAuth authorization code flow that requests a token with basically a random redirect URI, which does not work, of course.
+
+If you do not need authorization code flow or client certificate authentication, you could certainly use Milkman.
+I do not think it does a bad job for basic use cases, it is just not fun to use.
+
+Given the other tools that are already available, seeing their maturity, UI and UX, I do not see a scenario where I would prefer Milkman.
+
+== Conclusion
+
+Checking out various API clients, giving them a try, getting to talk about the experience with various people, and writing about it was a lot of fun lately.
+
+Not too long ago, I thought there was Postman, and that was it.
+I knew about Insomnia, I gave it a first try a few years ago, but it did not make me switch back then.
+
+Over the last couple of months, I got to know quite a lot of different other API clients, and I am really amazed by the variety of tools that are available, and I am sure everyone will be able to find a tool that fits their needs and that is perfect for them.
+
+Luckily, I find my personal use cases and immediate requirements to be satisfied by multiple tools, and I am happy to have a choice that I did not expect to have.
+By now, I can clearly state Postman is out of the game for me, and I do not think I will ever use it again.
