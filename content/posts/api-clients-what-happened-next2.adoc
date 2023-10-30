@@ -1,9 +1,9 @@
 ---
-title: "Another Two Weeks Later: What's the API Client World up to?"
+title: "Another Two Weeks Later: What's the API Client to use now?"
 date: 2023-10-30T16:14:25+01:00
 draft: false
 description: "Another exploration of the latest state of various API clients to conclude if they are worth using and viable alternatives to Postman and maybe Insomnia, featuring Insomnium, Bruno, Hoppscotch, Testfully, Milkman, httpiness, and Kreya."
-slug: "web-api-clients-whats-next-again"
+slug: "web-api-clients-what-to-use-now"
 categories:
 - API
 - Testing
